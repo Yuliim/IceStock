@@ -1,0 +1,1223 @@
+{
+  "products": [
+    {
+      "productId": "P001",
+      "productName": "메로나",
+      "categoryId": "C001",
+      "purchasePrice": 400,
+      "sellingPrice": 700,
+      "stock": 8,
+      "safetyStock": 15,
+      "unit": "EA",
+      "active": true
+    },
+    {
+      "productId": "P002",
+      "productName": "수박바",
+      "categoryId": "C001",
+      "purchasePrice": 500,
+      "sellingPrice": 900,
+      "stock": 42,
+      "safetyStock": 20,
+      "unit": "EA",
+      "active": true
+    },
+    {
+      "productId": "P003",
+      "productName": "죠스바",
+      "categoryId": "C001",
+      "purchasePrice": 600,
+      "sellingPrice": 1100,
+      "stock": 24,
+      "safetyStock": 10,
+      "unit": "EA",
+      "active": true
+    },
+    {
+      "productId": "P004",
+      "productName": "스크류바",
+      "categoryId": "C001",
+      "purchasePrice": 700,
+      "sellingPrice": 1000,
+      "stock": 6,
+      "safetyStock": 15,
+      "unit": "EA",
+      "active": true
+    },
+    {
+      "productId": "P005",
+      "productName": "비비빅",
+      "categoryId": "C002",
+      "purchasePrice": 850,
+      "sellingPrice": 1250,
+      "stock": 31,
+      "safetyStock": 20,
+      "unit": "EA",
+      "active": true
+    },
+    {
+      "productId": "P006",
+      "productName": "월드콘",
+      "categoryId": "C002",
+      "purchasePrice": 450,
+      "sellingPrice": 950,
+      "stock": 19,
+      "safetyStock": 10,
+      "unit": "EA",
+      "active": true
+    },
+    {
+      "productId": "P007",
+      "productName": "구구콘",
+      "categoryId": "C002",
+      "purchasePrice": 550,
+      "sellingPrice": 850,
+      "stock": 12,
+      "safetyStock": 15,
+      "unit": "EA",
+      "active": true
+    },
+    {
+      "productId": "P008",
+      "productName": "슈퍼콘",
+      "categoryId": "C002",
+      "purchasePrice": 650,
+      "sellingPrice": 1050,
+      "stock": 27,
+      "safetyStock": 20,
+      "unit": "EA",
+      "active": true
+    },
+    {
+      "productId": "P009",
+      "productName": "빵빠레",
+      "categoryId": "C003",
+      "purchasePrice": 800,
+      "sellingPrice": 1300,
+      "stock": 38,
+      "safetyStock": 10,
+      "unit": "EA",
+      "active": true
+    },
+    {
+      "productId": "P010",
+      "productName": "붕어싸만코",
+      "categoryId": "C003",
+      "purchasePrice": 900,
+      "sellingPrice": 1200,
+      "stock": 14,
+      "safetyStock": 15,
+      "unit": "EA",
+      "active": true
+    },
+    {
+      "productId": "P011",
+      "productName": "쿠키오",
+      "categoryId": "C003",
+      "purchasePrice": 500,
+      "sellingPrice": 900,
+      "stock": 22,
+      "safetyStock": 20,
+      "unit": "EA",
+      "active": true
+    },
+    {
+      "productId": "P012",
+      "productName": "찰떡아이스",
+      "categoryId": "C003",
+      "purchasePrice": 600,
+      "sellingPrice": 1100,
+      "stock": 9,
+      "safetyStock": 10,
+      "unit": "EA",
+      "active": true
+    },
+    {
+      "productId": "P013",
+      "productName": "아시나요",
+      "categoryId": "C004",
+      "purchasePrice": 750,
+      "sellingPrice": 1050,
+      "stock": 34,
+      "safetyStock": 15,
+      "unit": "EA",
+      "active": true
+    },
+    {
+      "productId": "P014",
+      "productName": "투게더",
+      "categoryId": "C004",
+      "purchasePrice": 850,
+      "sellingPrice": 1250,
+      "stock": 18,
+      "safetyStock": 20,
+      "unit": "EA",
+      "active": true
+    },
+    {
+      "productId": "P015",
+      "productName": "엑설런트",
+      "categoryId": "C004",
+      "purchasePrice": 950,
+      "sellingPrice": 1450,
+      "stock": 45,
+      "safetyStock": 10,
+      "unit": "EA",
+      "active": true
+    },
+    {
+      "productId": "P016",
+      "productName": "설레임",
+      "categoryId": "C004",
+      "purchasePrice": 550,
+      "sellingPrice": 850,
+      "stock": 11,
+      "safetyStock": 15,
+      "unit": "EA",
+      "active": true
+    },
+    {
+      "productId": "P017",
+      "productName": "빠삐코",
+      "categoryId": "C005",
+      "purchasePrice": 700,
+      "sellingPrice": 1100,
+      "stock": 29,
+      "safetyStock": 20,
+      "unit": "EA",
+      "active": true
+    },
+    {
+      "productId": "P018",
+      "productName": "폴라포",
+      "categoryId": "C005",
+      "purchasePrice": 800,
+      "sellingPrice": 1300,
+      "stock": 16,
+      "safetyStock": 10,
+      "unit": "EA",
+      "active": true
+    },
+    {
+      "productId": "P019",
+      "productName": "탱크보이",
+      "categoryId": "C005",
+      "purchasePrice": 900,
+      "sellingPrice": 1200,
+      "stock": 25,
+      "safetyStock": 15,
+      "unit": "EA",
+      "active": true
+    },
+    {
+      "productId": "P020",
+      "productName": "더위사냥",
+      "categoryId": "C005",
+      "purchasePrice": 1000,
+      "sellingPrice": 1400,
+      "stock": 7,
+      "safetyStock": 20,
+      "unit": "EA",
+      "active": true
+    }
+  ],
+  "categories": [
+    {
+      "categoryId": "C001",
+      "categoryName": "바 아이스크림"
+    },
+    {
+      "categoryId": "C002",
+      "categoryName": "콘 아이스크림"
+    },
+    {
+      "categoryId": "C003",
+      "categoryName": "샌드 아이스크림"
+    },
+    {
+      "categoryId": "C004",
+      "categoryName": "컵 아이스크림"
+    },
+    {
+      "categoryId": "C005",
+      "categoryName": "튜브형 아이스크림"
+    },
+    {
+      "categoryId": "C006",
+      "categoryName": "기타"
+    }
+  ],
+  "movements": [
+    {
+      "movementId": "M001",
+      "productId": "P007",
+      "date": "2026-10-11",
+      "type": "OUT",
+      "reason": "SALE",
+      "quantity": 8,
+      "beforeStock": 20,
+      "afterStock": 12,
+      "note": "매장 판매"
+    },
+    {
+      "movementId": "M002",
+      "productId": "P014",
+      "date": "2026-10-12",
+      "type": "OUT",
+      "reason": "SALE",
+      "quantity": 11,
+      "beforeStock": 29,
+      "afterStock": 18,
+      "note": "매장 판매"
+    },
+    {
+      "movementId": "M003",
+      "productId": "P001",
+      "date": "2026-10-13",
+      "type": "IN",
+      "reason": "PURCHASE",
+      "quantity": 14,
+      "beforeStock": 0,
+      "afterStock": 14,
+      "note": "정기 입고"
+    },
+    {
+      "movementId": "M004",
+      "productId": "P008",
+      "date": "2026-10-14",
+      "type": "OUT",
+      "reason": "SALE",
+      "quantity": 17,
+      "beforeStock": 44,
+      "afterStock": 27,
+      "note": "매장 판매"
+    },
+    {
+      "movementId": "M005",
+      "productId": "P015",
+      "date": "2026-10-15",
+      "type": "OUT",
+      "reason": "SALE",
+      "quantity": 20,
+      "beforeStock": 65,
+      "afterStock": 45,
+      "note": "매장 판매"
+    },
+    {
+      "movementId": "M006",
+      "productId": "P002",
+      "date": "2026-10-16",
+      "type": "IN",
+      "reason": "PURCHASE",
+      "quantity": 7,
+      "beforeStock": 35,
+      "afterStock": 42,
+      "note": "정기 입고"
+    },
+    {
+      "movementId": "M007",
+      "productId": "P009",
+      "date": "2026-10-17",
+      "type": "OUT",
+      "reason": "DISCARD",
+      "quantity": 10,
+      "beforeStock": 48,
+      "afterStock": 38,
+      "note": "유통기한 폐기"
+    },
+    {
+      "movementId": "M008",
+      "productId": "P016",
+      "date": "2026-10-18",
+      "type": "OUT",
+      "reason": "SALE",
+      "quantity": 13,
+      "beforeStock": 24,
+      "afterStock": 11,
+      "note": "매장 판매"
+    },
+    {
+      "movementId": "M009",
+      "productId": "P003",
+      "date": "2026-10-19",
+      "type": "IN",
+      "reason": "PURCHASE",
+      "quantity": 16,
+      "beforeStock": 8,
+      "afterStock": 24,
+      "note": "정기 입고"
+    },
+    {
+      "movementId": "M010",
+      "productId": "P010",
+      "date": "2026-10-20",
+      "type": "OUT",
+      "reason": "SALE",
+      "quantity": 19,
+      "beforeStock": 33,
+      "afterStock": 14,
+      "note": "매장 판매"
+    },
+    {
+      "movementId": "M011",
+      "productId": "P017",
+      "date": "2026-10-21",
+      "type": "OUT",
+      "reason": "SALE",
+      "quantity": 6,
+      "beforeStock": 35,
+      "afterStock": 29,
+      "note": "매장 판매"
+    },
+    {
+      "movementId": "M012",
+      "productId": "P004",
+      "date": "2026-10-22",
+      "type": "IN",
+      "reason": "PURCHASE",
+      "quantity": 9,
+      "beforeStock": 0,
+      "afterStock": 9,
+      "note": "정기 입고"
+    },
+    {
+      "movementId": "M013",
+      "productId": "P011",
+      "date": "2026-10-23",
+      "type": "OUT",
+      "reason": "SALE",
+      "quantity": 12,
+      "beforeStock": 34,
+      "afterStock": 22,
+      "note": "매장 판매"
+    },
+    {
+      "movementId": "M014",
+      "productId": "P018",
+      "date": "2026-10-24",
+      "type": "OUT",
+      "reason": "DISCARD",
+      "quantity": 15,
+      "beforeStock": 31,
+      "afterStock": 16,
+      "note": "유통기한 폐기"
+    },
+    {
+      "movementId": "M015",
+      "productId": "P005",
+      "date": "2026-10-25",
+      "type": "IN",
+      "reason": "PURCHASE",
+      "quantity": 18,
+      "beforeStock": 13,
+      "afterStock": 31,
+      "note": "정기 입고"
+    },
+    {
+      "movementId": "M016",
+      "productId": "P012",
+      "date": "2026-10-26",
+      "type": "OUT",
+      "reason": "SALE",
+      "quantity": 5,
+      "beforeStock": 14,
+      "afterStock": 9,
+      "note": "매장 판매"
+    },
+    {
+      "movementId": "M017",
+      "productId": "P019",
+      "date": "2026-10-27",
+      "type": "OUT",
+      "reason": "SALE",
+      "quantity": 8,
+      "beforeStock": 33,
+      "afterStock": 25,
+      "note": "매장 판매"
+    },
+    {
+      "movementId": "M018",
+      "productId": "P006",
+      "date": "2026-10-28",
+      "type": "IN",
+      "reason": "PURCHASE",
+      "quantity": 11,
+      "beforeStock": 8,
+      "afterStock": 19,
+      "note": "정기 입고"
+    },
+    {
+      "movementId": "M019",
+      "productId": "P013",
+      "date": "2026-10-29",
+      "type": "OUT",
+      "reason": "SALE",
+      "quantity": 14,
+      "beforeStock": 48,
+      "afterStock": 34,
+      "note": "매장 판매"
+    },
+    {
+      "movementId": "M020",
+      "productId": "P020",
+      "date": "2026-10-30",
+      "type": "OUT",
+      "reason": "SALE",
+      "quantity": 17,
+      "beforeStock": 24,
+      "afterStock": 7,
+      "note": "매장 판매"
+    },
+    {
+      "movementId": "M021",
+      "productId": "P007",
+      "date": "2026-10-31",
+      "type": "IN",
+      "reason": "PURCHASE",
+      "quantity": 20,
+      "beforeStock": 0,
+      "afterStock": 20,
+      "note": "정기 입고"
+    },
+    {
+      "movementId": "M022",
+      "productId": "P014",
+      "date": "2026-11-01",
+      "type": "OUT",
+      "reason": "SALE",
+      "quantity": 7,
+      "beforeStock": 25,
+      "afterStock": 18,
+      "note": "매장 판매"
+    },
+    {
+      "movementId": "M023",
+      "productId": "P001",
+      "date": "2026-11-02",
+      "type": "OUT",
+      "reason": "SALE",
+      "quantity": 10,
+      "beforeStock": 20,
+      "afterStock": 10,
+      "note": "매장 판매"
+    },
+    {
+      "movementId": "M024",
+      "productId": "P008",
+      "date": "2026-11-03",
+      "type": "IN",
+      "reason": "PURCHASE",
+      "quantity": 13,
+      "beforeStock": 18,
+      "afterStock": 31,
+      "note": "정기 입고"
+    },
+    {
+      "movementId": "M025",
+      "productId": "P015",
+      "date": "2026-11-04",
+      "type": "OUT",
+      "reason": "SALE",
+      "quantity": 16,
+      "beforeStock": 57,
+      "afterStock": 41,
+      "note": "매장 판매"
+    },
+    {
+      "movementId": "M026",
+      "productId": "P002",
+      "date": "2026-10-01",
+      "type": "OUT",
+      "reason": "SALE",
+      "quantity": 19,
+      "beforeStock": 59,
+      "afterStock": 40,
+      "note": "매장 판매"
+    },
+    {
+      "movementId": "M027",
+      "productId": "P009",
+      "date": "2026-10-02",
+      "type": "IN",
+      "reason": "PURCHASE",
+      "quantity": 6,
+      "beforeStock": 32,
+      "afterStock": 38,
+      "note": "정기 입고"
+    },
+    {
+      "movementId": "M028",
+      "productId": "P016",
+      "date": "2026-10-03",
+      "type": "OUT",
+      "reason": "DISCARD",
+      "quantity": 9,
+      "beforeStock": 22,
+      "afterStock": 13,
+      "note": "유통기한 폐기"
+    },
+    {
+      "movementId": "M029",
+      "productId": "P003",
+      "date": "2026-10-04",
+      "type": "OUT",
+      "reason": "SALE",
+      "quantity": 12,
+      "beforeStock": 40,
+      "afterStock": 28,
+      "note": "매장 판매"
+    },
+    {
+      "movementId": "M030",
+      "productId": "P010",
+      "date": "2026-10-05",
+      "type": "IN",
+      "reason": "PURCHASE",
+      "quantity": 15,
+      "beforeStock": 0,
+      "afterStock": 15,
+      "note": "정기 입고"
+    },
+    {
+      "movementId": "M031",
+      "productId": "P017",
+      "date": "2026-10-06",
+      "type": "OUT",
+      "reason": "SALE",
+      "quantity": 18,
+      "beforeStock": 45,
+      "afterStock": 27,
+      "note": "매장 판매"
+    },
+    {
+      "movementId": "M032",
+      "productId": "P004",
+      "date": "2026-10-07",
+      "type": "OUT",
+      "reason": "SALE",
+      "quantity": 5,
+      "beforeStock": 11,
+      "afterStock": 6,
+      "note": "매장 판매"
+    },
+    {
+      "movementId": "M033",
+      "productId": "P011",
+      "date": "2026-10-08",
+      "type": "IN",
+      "reason": "PURCHASE",
+      "quantity": 8,
+      "beforeStock": 16,
+      "afterStock": 24,
+      "note": "정기 입고"
+    },
+    {
+      "movementId": "M034",
+      "productId": "P018",
+      "date": "2026-10-09",
+      "type": "OUT",
+      "reason": "SALE",
+      "quantity": 11,
+      "beforeStock": 31,
+      "afterStock": 20,
+      "note": "매장 판매"
+    },
+    {
+      "movementId": "M035",
+      "productId": "P005",
+      "date": "2026-10-10",
+      "type": "OUT",
+      "reason": "DISCARD",
+      "quantity": 14,
+      "beforeStock": 41,
+      "afterStock": 27,
+      "note": "유통기한 폐기"
+    },
+    {
+      "movementId": "M036",
+      "productId": "P012",
+      "date": "2026-10-11",
+      "type": "IN",
+      "reason": "PURCHASE",
+      "quantity": 17,
+      "beforeStock": 0,
+      "afterStock": 17,
+      "note": "정기 입고"
+    },
+    {
+      "movementId": "M037",
+      "productId": "P019",
+      "date": "2026-10-12",
+      "type": "OUT",
+      "reason": "SALE",
+      "quantity": 20,
+      "beforeStock": 45,
+      "afterStock": 25,
+      "note": "매장 판매"
+    },
+    {
+      "movementId": "M038",
+      "productId": "P006",
+      "date": "2026-10-13",
+      "type": "OUT",
+      "reason": "SALE",
+      "quantity": 7,
+      "beforeStock": 28,
+      "afterStock": 21,
+      "note": "매장 판매"
+    },
+    {
+      "movementId": "M039",
+      "productId": "P013",
+      "date": "2026-10-14",
+      "type": "IN",
+      "reason": "PURCHASE",
+      "quantity": 10,
+      "beforeStock": 28,
+      "afterStock": 38,
+      "note": "정기 입고"
+    },
+    {
+      "movementId": "M040",
+      "productId": "P020",
+      "date": "2026-10-15",
+      "type": "OUT",
+      "reason": "SALE",
+      "quantity": 13,
+      "beforeStock": 16,
+      "afterStock": 3,
+      "note": "매장 판매"
+    },
+    {
+      "movementId": "M041",
+      "productId": "P007",
+      "date": "2026-10-16",
+      "type": "OUT",
+      "reason": "SALE",
+      "quantity": 16,
+      "beforeStock": 26,
+      "afterStock": 10,
+      "note": "매장 판매"
+    },
+    {
+      "movementId": "M042",
+      "productId": "P014",
+      "date": "2026-10-17",
+      "type": "IN",
+      "reason": "PURCHASE",
+      "quantity": 19,
+      "beforeStock": 0,
+      "afterStock": 19,
+      "note": "정기 입고"
+    },
+    {
+      "movementId": "M043",
+      "productId": "P001",
+      "date": "2026-10-18",
+      "type": "OUT",
+      "reason": "SALE",
+      "quantity": 6,
+      "beforeStock": 16,
+      "afterStock": 10,
+      "note": "매장 판매"
+    },
+    {
+      "movementId": "M044",
+      "productId": "P008",
+      "date": "2026-10-19",
+      "type": "OUT",
+      "reason": "SALE",
+      "quantity": 9,
+      "beforeStock": 40,
+      "afterStock": 31,
+      "note": "매장 판매"
+    },
+    {
+      "movementId": "M045",
+      "productId": "P015",
+      "date": "2026-10-20",
+      "type": "IN",
+      "reason": "PURCHASE",
+      "quantity": 12,
+      "beforeStock": 29,
+      "afterStock": 41,
+      "note": "정기 입고"
+    },
+    {
+      "movementId": "M046",
+      "productId": "P002",
+      "date": "2026-10-21",
+      "type": "OUT",
+      "reason": "SALE",
+      "quantity": 15,
+      "beforeStock": 55,
+      "afterStock": 40,
+      "note": "매장 판매"
+    },
+    {
+      "movementId": "M047",
+      "productId": "P009",
+      "date": "2026-10-22",
+      "type": "OUT",
+      "reason": "SALE",
+      "quantity": 18,
+      "beforeStock": 56,
+      "afterStock": 38,
+      "note": "매장 판매"
+    },
+    {
+      "movementId": "M048",
+      "productId": "P016",
+      "date": "2026-10-23",
+      "type": "IN",
+      "reason": "PURCHASE",
+      "quantity": 5,
+      "beforeStock": 8,
+      "afterStock": 13,
+      "note": "정기 입고"
+    },
+    {
+      "movementId": "M049",
+      "productId": "P003",
+      "date": "2026-10-24",
+      "type": "OUT",
+      "reason": "DISCARD",
+      "quantity": 8,
+      "beforeStock": 36,
+      "afterStock": 28,
+      "note": "유통기한 폐기"
+    },
+    {
+      "movementId": "M050",
+      "productId": "P010",
+      "date": "2026-10-25",
+      "type": "OUT",
+      "reason": "SALE",
+      "quantity": 11,
+      "beforeStock": 21,
+      "afterStock": 10,
+      "note": "매장 판매"
+    },
+    {
+      "movementId": "M051",
+      "productId": "P017",
+      "date": "2026-10-26",
+      "type": "IN",
+      "reason": "PURCHASE",
+      "quantity": 14,
+      "beforeStock": 13,
+      "afterStock": 27,
+      "note": "정기 입고"
+    },
+    {
+      "movementId": "M052",
+      "productId": "P004",
+      "date": "2026-10-27",
+      "type": "OUT",
+      "reason": "SALE",
+      "quantity": 17,
+      "beforeStock": 23,
+      "afterStock": 6,
+      "note": "매장 판매"
+    },
+    {
+      "movementId": "M053",
+      "productId": "P011",
+      "date": "2026-10-28",
+      "type": "OUT",
+      "reason": "SALE",
+      "quantity": 20,
+      "beforeStock": 44,
+      "afterStock": 24,
+      "note": "매장 판매"
+    },
+    {
+      "movementId": "M054",
+      "productId": "P018",
+      "date": "2026-10-29",
+      "type": "IN",
+      "reason": "PURCHASE",
+      "quantity": 7,
+      "beforeStock": 13,
+      "afterStock": 20,
+      "note": "정기 입고"
+    },
+    {
+      "movementId": "M055",
+      "productId": "P005",
+      "date": "2026-10-30",
+      "type": "OUT",
+      "reason": "SALE",
+      "quantity": 10,
+      "beforeStock": 37,
+      "afterStock": 27,
+      "note": "매장 판매"
+    },
+    {
+      "movementId": "M056",
+      "productId": "P012",
+      "date": "2026-10-31",
+      "type": "OUT",
+      "reason": "DISCARD",
+      "quantity": 13,
+      "beforeStock": 20,
+      "afterStock": 7,
+      "note": "유통기한 폐기"
+    },
+    {
+      "movementId": "M057",
+      "productId": "P019",
+      "date": "2026-11-01",
+      "type": "IN",
+      "reason": "PURCHASE",
+      "quantity": 16,
+      "beforeStock": 9,
+      "afterStock": 25,
+      "note": "정기 입고"
+    },
+    {
+      "movementId": "M058",
+      "productId": "P006",
+      "date": "2026-11-02",
+      "type": "OUT",
+      "reason": "SALE",
+      "quantity": 19,
+      "beforeStock": 40,
+      "afterStock": 21,
+      "note": "매장 판매"
+    },
+    {
+      "movementId": "M059",
+      "productId": "P013",
+      "date": "2026-11-03",
+      "type": "OUT",
+      "reason": "SALE",
+      "quantity": 6,
+      "beforeStock": 44,
+      "afterStock": 38,
+      "note": "매장 판매"
+    },
+    {
+      "movementId": "M060",
+      "productId": "P020",
+      "date": "2026-11-04",
+      "type": "IN",
+      "reason": "PURCHASE",
+      "quantity": 9,
+      "beforeStock": 0,
+      "afterStock": 9,
+      "note": "정기 입고"
+    }
+  ],
+  "sales": [
+    {
+      "salesId": "S001",
+      "productId": "P013",
+      "date": "2026-11-03",
+      "quantity": 6,
+      "totalAmount": 6300,
+      "totalCost": 4500,
+      "profit": 1800
+    },
+    {
+      "salesId": "S002",
+      "productId": "P006",
+      "date": "2026-11-02",
+      "quantity": 19,
+      "totalAmount": 18050,
+      "totalCost": 8550,
+      "profit": 9500
+    },
+    {
+      "salesId": "S003",
+      "productId": "P005",
+      "date": "2026-10-30",
+      "quantity": 10,
+      "totalAmount": 12500,
+      "totalCost": 8500,
+      "profit": 4000
+    },
+    {
+      "salesId": "S004",
+      "productId": "P011",
+      "date": "2026-10-28",
+      "quantity": 20,
+      "totalAmount": 18000,
+      "totalCost": 10000,
+      "profit": 8000
+    },
+    {
+      "salesId": "S005",
+      "productId": "P004",
+      "date": "2026-10-27",
+      "quantity": 17,
+      "totalAmount": 17000,
+      "totalCost": 11900,
+      "profit": 5100
+    },
+    {
+      "salesId": "S006",
+      "productId": "P010",
+      "date": "2026-10-25",
+      "quantity": 11,
+      "totalAmount": 13200,
+      "totalCost": 9900,
+      "profit": 3300
+    },
+    {
+      "salesId": "S007",
+      "productId": "P009",
+      "date": "2026-10-22",
+      "quantity": 18,
+      "totalAmount": 23400,
+      "totalCost": 14400,
+      "profit": 9000
+    },
+    {
+      "salesId": "S008",
+      "productId": "P002",
+      "date": "2026-10-21",
+      "quantity": 15,
+      "totalAmount": 13500,
+      "totalCost": 7500,
+      "profit": 6000
+    },
+    {
+      "salesId": "S009",
+      "productId": "P008",
+      "date": "2026-10-19",
+      "quantity": 9,
+      "totalAmount": 9450,
+      "totalCost": 5850,
+      "profit": 3600
+    },
+    {
+      "salesId": "S010",
+      "productId": "P001",
+      "date": "2026-10-18",
+      "quantity": 6,
+      "totalAmount": 4200,
+      "totalCost": 2400,
+      "profit": 1800
+    },
+    {
+      "salesId": "S011",
+      "productId": "P007",
+      "date": "2026-10-16",
+      "quantity": 16,
+      "totalAmount": 13600,
+      "totalCost": 8800,
+      "profit": 4800
+    },
+    {
+      "salesId": "S012",
+      "productId": "P020",
+      "date": "2026-10-15",
+      "quantity": 13,
+      "totalAmount": 18200,
+      "totalCost": 13000,
+      "profit": 5200
+    },
+    {
+      "salesId": "S013",
+      "productId": "P006",
+      "date": "2026-10-13",
+      "quantity": 7,
+      "totalAmount": 6650,
+      "totalCost": 3150,
+      "profit": 3500
+    },
+    {
+      "salesId": "S014",
+      "productId": "P019",
+      "date": "2026-10-12",
+      "quantity": 20,
+      "totalAmount": 24000,
+      "totalCost": 18000,
+      "profit": 6000
+    },
+    {
+      "salesId": "S015",
+      "productId": "P018",
+      "date": "2026-10-09",
+      "quantity": 11,
+      "totalAmount": 14300,
+      "totalCost": 8800,
+      "profit": 5500
+    },
+    {
+      "salesId": "S016",
+      "productId": "P004",
+      "date": "2026-10-07",
+      "quantity": 5,
+      "totalAmount": 5000,
+      "totalCost": 3500,
+      "profit": 1500
+    },
+    {
+      "salesId": "S017",
+      "productId": "P017",
+      "date": "2026-10-06",
+      "quantity": 18,
+      "totalAmount": 19800,
+      "totalCost": 12600,
+      "profit": 7200
+    },
+    {
+      "salesId": "S018",
+      "productId": "P003",
+      "date": "2026-10-04",
+      "quantity": 12,
+      "totalAmount": 13200,
+      "totalCost": 7200,
+      "profit": 6000
+    },
+    {
+      "salesId": "S019",
+      "productId": "P002",
+      "date": "2026-10-01",
+      "quantity": 19,
+      "totalAmount": 17100,
+      "totalCost": 9500,
+      "profit": 7600
+    },
+    {
+      "salesId": "S020",
+      "productId": "P015",
+      "date": "2026-11-04",
+      "quantity": 16,
+      "totalAmount": 23200,
+      "totalCost": 15200,
+      "profit": 8000
+    },
+    {
+      "salesId": "S021",
+      "productId": "P001",
+      "date": "2026-11-02",
+      "quantity": 10,
+      "totalAmount": 7000,
+      "totalCost": 4000,
+      "profit": 3000
+    },
+    {
+      "salesId": "S022",
+      "productId": "P014",
+      "date": "2026-11-01",
+      "quantity": 7,
+      "totalAmount": 8750,
+      "totalCost": 5950,
+      "profit": 2800
+    },
+    {
+      "salesId": "S023",
+      "productId": "P020",
+      "date": "2026-10-30",
+      "quantity": 17,
+      "totalAmount": 23800,
+      "totalCost": 17000,
+      "profit": 6800
+    },
+    {
+      "salesId": "S024",
+      "productId": "P013",
+      "date": "2026-10-29",
+      "quantity": 14,
+      "totalAmount": 14700,
+      "totalCost": 10500,
+      "profit": 4200
+    },
+    {
+      "salesId": "S025",
+      "productId": "P019",
+      "date": "2026-10-27",
+      "quantity": 8,
+      "totalAmount": 9600,
+      "totalCost": 7200,
+      "profit": 2400
+    },
+    {
+      "salesId": "S026",
+      "productId": "P012",
+      "date": "2026-10-26",
+      "quantity": 5,
+      "totalAmount": 5500,
+      "totalCost": 3000,
+      "profit": 2500
+    },
+    {
+      "salesId": "S027",
+      "productId": "P011",
+      "date": "2026-10-23",
+      "quantity": 12,
+      "totalAmount": 10800,
+      "totalCost": 6000,
+      "profit": 4800
+    },
+    {
+      "salesId": "S028",
+      "productId": "P017",
+      "date": "2026-10-21",
+      "quantity": 6,
+      "totalAmount": 6600,
+      "totalCost": 4200,
+      "profit": 2400
+    },
+    {
+      "salesId": "S029",
+      "productId": "P010",
+      "date": "2026-10-20",
+      "quantity": 19,
+      "totalAmount": 22800,
+      "totalCost": 17100,
+      "profit": 5700
+    },
+    {
+      "salesId": "S030",
+      "productId": "P016",
+      "date": "2026-10-18",
+      "quantity": 13,
+      "totalAmount": 11050,
+      "totalCost": 7150,
+      "profit": 3900
+    },
+    {
+      "salesId": "S031",
+      "productId": "P015",
+      "date": "2026-10-15",
+      "quantity": 20,
+      "totalAmount": 29000,
+      "totalCost": 19000,
+      "profit": 10000
+    },
+    {
+      "salesId": "S032",
+      "productId": "P008",
+      "date": "2026-10-14",
+      "quantity": 17,
+      "totalAmount": 17850,
+      "totalCost": 11050,
+      "profit": 6800
+    },
+    {
+      "salesId": "S033",
+      "productId": "P014",
+      "date": "2026-10-12",
+      "quantity": 11,
+      "totalAmount": 13750,
+      "totalCost": 9350,
+      "profit": 4400
+    },
+    {
+      "salesId": "S034",
+      "productId": "P007",
+      "date": "2026-10-11",
+      "quantity": 8,
+      "totalAmount": 6800,
+      "totalCost": 4400,
+      "profit": 2400
+    }
+  ],
+  "ui": {
+    "selectedProductId": null
+  }
+}

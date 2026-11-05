@@ -79,12 +79,41 @@
           "target": [
             "TargetMainView"
           ]
+        },
+        {
+          "name": "dashboard",
+          "pattern": "",
+          "target": "dashboard"
+        },
+        {
+          "name": "product",
+          "pattern": "product",
+          "target": "product"
+        },
+        {
+          "name": "stockMovement",
+          "pattern": "stockMovement",
+          "target": "stockMovement"
         }
+
       ],
       "targets": {
         "TargetMainView": {
           "id": "MainView",
           "name": "MainView"
+        },
+        "product": {
+          "id": "product",
+          "name": "product"
+        },
+        "stockMovement": {
+          "id": "stockMovement",
+          "name": "stockMovement"
+        },
+        "dashboard": {
+          "viewType": "XML",
+          "viewName": "MainView",
+          "viewId": "MainView"
         }
       }
     },

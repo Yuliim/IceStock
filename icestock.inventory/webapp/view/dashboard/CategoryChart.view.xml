@@ -1,7 +1,57 @@
 <mvc:View controllerName="icestock.inventory.icestock.inventory.controller.dashboard.CategoryChart"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
-    <Page title="{i18n>title}">
-        <Text text="Category Chart"></Text>
+    xmlns:w="sap.ui.integration.widgets"
+    xmlns="sap.m"
+    xmlns:viz="sap.viz.ui5.controls" xmlns:layout="sap.ui.layout"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data="sap.viz.ui5.data" height="100%"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.f"
+    xmlns:card="sap.f.cards">
+    <Page id="dashboard page" title="{i18n>title}">
+        <l:Grid containerQuery="true" defaultSpan="XL6 L6 M12 S12" class="sapUiSmallMargin">
+            <!--  (D : 월별 입출고 현황 자리) -->
+            <Panel headerText="월별 입출고 현황">
+                <layoutData>
+                    <l:GridData span="XL8 L8 M12 S12"/>
+                </layoutData>
+                <Text text="차트 D 자리"/>
+            </Panel>
+
+            <!-- (E : 카테고리별 재고) -->
+            <Panel>
+                <layoutData>
+                    <l:GridData span="XL4 L4 M12 S12"/>
+                </layoutData>
+                <VBox>
+                    <Title text="카테고리별 재고" level="H3"/>
+                    <Text text="현재 재고 수량 기준" class="sapUiTinyMarginBottom"/>
+                </VBox>
+                <viz:VizFrame id="idVizFrame"
+                    vizType="donut"
+                    width="100%" height="320px"
+                    uiConfig="{applicationSet:'fiori'}"
+                    vizProperties="{ title: {text : '카테고리별 재고', visible : true}}">
+                    <viz:dataset>
+                        <viz.data:FlattenedDataset data="{/products}">
+                            <viz.data:dimensions>
+                                <viz.data:DimensionDefinition name="카테고리" value="{categoryId}"/>
+                            </viz.data:dimensions>
+                            <viz.data:measures>
+                                <viz.data:MeasureDefinition name="수량" value="{stock}"/>
+                            </viz.data:measures>
+                        </viz.data:FlattenedDataset>
+                    </viz:dataset>
+                    
+                    <viz:feeds>
+                        <viz.feeds:FeedItem uid="size" type="Measure" values="수량"/>
+                        <viz.feeds:FeedItem uid="color" type="Dimension" values="카테고리"/>
+                    </viz:feeds>
+                    <viz:dependents>
+                        <viz:Popover id="idPopOver"/>
+                    </viz:dependents>
+                </viz:VizFrame>
+            </Panel>
+        </l:Grid>
     </Page>
 </mvc:View>

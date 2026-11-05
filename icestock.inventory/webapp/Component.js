@@ -19,6 +19,9 @@ sap.ui.define([
             // set the device model
             this.setModel(models.createDeviceModel(), "device");
 
+            // 추가: 공통 Inventory 모델
+            this.setModel(models.createInventoryModel(), "inventory");
+
             // enable routing
             this.getRouter().initialize();
         }

@@ -27,6 +27,16 @@ sap.ui.define([
 
   return BaseController.extend("icestock.inventory.icestock.inventory.controller.App", {
       onInit() {
+      },
+
+      onItemSelect: function (oEvent) {
+
+        // 클릭한 NavigationListItem의 key 값을 가져옴 (예: "product")
+        var sKey = oEvent.getParameter("item").getKey();
+        
+        // 라우터를 호출하여 해당 key 이름의 라우트로 이동
+        var oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo(sKey);
       }
   });
 });

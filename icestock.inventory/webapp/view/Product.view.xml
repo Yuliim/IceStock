@@ -1,0 +1,7 @@
+<mvc:View controllerName="icestock.inventory.icestock.inventory.controller.Product"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page  title="{i18n>title}">
+        <Text text="Product View"></Text>
+    </Page>
+</mvc:View>

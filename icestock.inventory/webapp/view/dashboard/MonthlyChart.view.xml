@@ -1,6 +1,7 @@
-<mvc:View controllerName="icestock.inventory.icestock.inventory.controller.MonthlyChart"
+<mvc:View controllerName="icestock.inventory.icestock.inventory.controller.dashboard.MonthlyChart"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
     <Page title="{i18n>title}">
+        <Text text="Monthly Chart"></Text>
     </Page>
 </mvc:View>

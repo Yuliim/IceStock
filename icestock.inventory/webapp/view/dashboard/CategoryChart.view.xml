@@ -1,6 +1,7 @@
-<mvc:View controllerName="icestock.inventory.icestock.inventory.controller.CategoryChart"
+<mvc:View controllerName="icestock.inventory.icestock.inventory.controller.dashboard.CategoryChart"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
     <Page title="{i18n>title}">
+        <Text text="Category Chart"></Text>
     </Page>
 </mvc:View>

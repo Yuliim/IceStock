@@ -4,7 +4,7 @@ sap.ui.define([
 ], (BaseController, JSONModel) => {
   "use strict";
 
-  return BaseController.extend("icestock.inventory.icestock.inventory.controller.LowStockTable", {
+  return BaseController.extend("icestock.inventory.icestock.inventory.controller.dashboard.LowStockTable", {
       onInit() {
         let aModel = new JSONModel("/json/products.json");
         this.getView().setModel(aModel);

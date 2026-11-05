@@ -1,63 +1,7 @@
-<mvc:View controllerName="icestock.inventory.icestock.inventory.controller.LowStockTable"
+<mvc:View controllerName="icestock.inventory.icestock.inventory.controller.dashboard.LowStockTable"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m"
-    xmlns:viz="sap.viz.ui5.controls"
-    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
-    xmlns:viz.data="sap.viz.ui5.data"
-    xmlns:t="sap.ui.table"
-    xmlns:u="sap.ui.unified"
-	xmlns:c="sap.ui.core"
-    xmlns:layout="sap.ui.layout"
-    >
+    xmlns="sap.m">
     <Page title="{i18n>title}">
-    <Panel width="100%" class="sapUiResponsiveMargin">
-    <VBox>
-        <t:Table rows="{/movements}"
-            selectionMode="Single"
-            paste="onPaste"
-            ariaLabelledBy="Title2"
-            visibleRowCount="8">
-            <t:extension>
-                <OverflowToolbar style="Clear">
-                    <Title id="Title2" text="재고 부족 상품" />
-                    <ToolbarSpacer/>
-                    <Link text="전체 보기 >" press="onPressAll"/>
-                </OverflowToolbar>
-            </t:extension>
-            <t:columns>
-                <t:Column width="5rem" hAlign="End">
-                    <Label text="상품코드"/>
-                    <t:template>
-                        <Text text="{productId}"/>
-                    </t:template>
-                </t:Column>
-                <t:Column width="10rem" hAlign="Center">
-                    <Label text="상품명"/>
-                    <t:template>
-                        <Text text="{productName}"/>
-                    </t:template>
-                </t:Column>
-                <t:Column width="8rem" hAlign="End">
-    <Label text="현재 재고"/>
-    <t:template>
-        <ObjectNumber number="{stock}" unit="개" state="Error"/>
-    </t:template>
-            </t:Column>
-                <t:Column width="8rem" hAlign="End">
-                    <Label text="안전재고"/>
-                        <t:template>
-                            <ObjectNumber number="{safetyStock}" unit="개"/>
-                        </t:template>
-            </t:Column>
-                <t:Column width="8rem" hAlign="Center">
-                    <Label text="상태"/>
-                    <t:template>
-                        <ObjectStatus text="{status}" state="Error"/>
-                    </t:template>
-                </t:Column>
-            </t:columns>
-        </t:Table>
-    </VBox>
-</Panel>
-</Page>
+        <Text text="LowStockTable"></Text>
+    </Page>
 </mvc:View>

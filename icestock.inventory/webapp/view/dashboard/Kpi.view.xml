@@ -1,6 +1,7 @@
-<mvc:View controllerName="icestock.inventory.icestock.inventory.controller.Kpi"
+<mvc:View controllerName="icestock.inventory.icestock.inventory.controller.dashboard.Kpi"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
     <Page title="{i18n>title}">
+        <Text text="KPI"></Text>
     </Page>
 </mvc:View>

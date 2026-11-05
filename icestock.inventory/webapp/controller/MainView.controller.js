@@ -6,6 +6,7 @@ sap.ui.define([
     return Controller.extend("icestock.inventory.icestock.inventory.controller.MainView", {
         onInit() {
             console.log("?");
+            console.log("???");
         }
     });
 });

@@ -1,3 +1,15 @@
+<!--MainView.xlm
+= 대시보드 화면 조립 
+: C·D·E의 하위 View 배치
+(하위 View를 추가할 때 사용하는 코드 예시) -->
+    <!-- KPI 하위 View 불러오기 -->
+    <!-- <mvc:XMLView
+        viewName="icestock.inventory.view.dashboard.Kpi" /> -->
+
+    <!-- 월별 입출고 차트 불러오기 -->
+    <!-- <mvc:XMLView
+        viewName="icestock.inventory.view.dashboard.MonthlyChart" /> -->
+
 <mvc:View controllerName="icestock.inventory.icestock.inventory.controller.MainView"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">

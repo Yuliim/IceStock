@@ -94,6 +94,31 @@
           "name": "stockMovement",
           "pattern": "stockMovement",
           "target": "stockMovement"
+        },
+        {
+          "name": "kpi",
+          "pattern": "kpi",
+          "target": "kpi"
+        },
+        {
+          "name": "monthlyChart",
+          "pattern": "monthlyChart",
+          "target": "monthlyChart"
+        },
+        {
+          "name": "categoryChart",
+          "pattern": "categoryChart",
+          "target": "categoryChart"
+        },
+        {
+          "name": "lowStockTable",
+          "pattern": "lowStockTable",
+          "target": "lowStockTable"
+        },
+        {
+          "name": "top5Table",
+          "pattern": "top5Table",
+          "target": "top5Table"
         }
 
       ],
@@ -114,6 +139,31 @@
           "viewType": "XML",
           "viewName": "MainView",
           "viewId": "MainView"
+        },
+        "kpi": {
+          "viewType": "XML",
+          "viewName": "dashboard.Kpi",
+          "viewId": "kpi"
+        },
+        "monthlyChart": {
+          "viewType": "XML",
+          "viewName": "dashboard.MonthlyChart",
+          "viewId": "monthlyChart"
+        },
+        "categoryChart": {
+          "viewType": "XML",
+          "viewName": "dashboard.CategoryChart",
+          "viewId": "categoryChart"
+        },
+        "lowStockTable": {
+          "viewType": "XML",
+          "viewName": "dashboard.LowStockTable",
+          "viewId": "lowStockTable"
+        },
+        "top5Table": {
+          "viewType": "XML",
+          "viewName": "dashboard.Top5Table",
+          "viewId": "top5Table"
         }
       }
     },

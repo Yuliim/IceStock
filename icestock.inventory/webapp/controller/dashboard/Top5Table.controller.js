@@ -3,7 +3,7 @@ sap.ui.define([
 ], (BaseController) => {
   "use strict";
 
-  return BaseController.extend("icestock.inventory.icestock.inventory.controller.Top5Table", {
+  return BaseController.extend("icestock.inventory.icestock.inventory.controller.dashboard.Top5Table", {
       onInit() {
       }
   });

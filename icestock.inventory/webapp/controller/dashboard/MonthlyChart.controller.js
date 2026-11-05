@@ -3,7 +3,7 @@ sap.ui.define([
 ], (BaseController) => {
   "use strict";
 
-  return BaseController.extend("icestock.inventory.icestock.inventory.controller.MonthlyChart", {
+  return BaseController.extend("icestock.inventory.icestock.inventory.controller.dashboard.MonthlyChart", {
       onInit() {
       }
   });

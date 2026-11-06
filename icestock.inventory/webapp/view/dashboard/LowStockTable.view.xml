@@ -1,7 +1,65 @@
 <mvc:View controllerName="icestock.inventory.icestock.inventory.controller.dashboard.LowStockTable"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
+    xmlns="sap.m"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data="sap.viz.ui5.data"
+    xmlns:t="sap.ui.table"
+    xmlns:u="sap.ui.unified"
+	xmlns:c="sap.ui.core"
+    xmlns:layout="sap.ui.layout">
+
     <Page title="{i18n>title}">
         <Text text="LowStockTable"></Text>
+        <Panel width="43rem" class="sapUiResponsiveMargin">
+    <VBox>
+        <t:Table rows="{/movements}"
+            selectionMode="Single"
+            paste="onPaste"
+            ariaLabelledBy="Title2"
+            visibleRowCount="8">
+            <t:extension >
+                <OverflowToolbar style="Clear">
+                    <Title id="Title2" text="재고 부족 상품" titleStyle= "H3"  />
+                    <ToolbarSpacer/>
+                    <Button text="전체 보기 >" press="onpress" type="Transparent"/>
+                </OverflowToolbar>
+                <Label text="안전재고 이하의 상품입니다"/>
+            </t:extension>
+            <t:columns>
+                <t:Column width="5rem" hAlign="End">
+                    <Label text="상품코드" design="Bold"/>
+                    <t:template>
+                        <Text text="{productId}" />
+                    </t:template>
+                </t:Column>
+                <t:Column width="10rem" hAlign="Center">
+                    <Label text="상품명" design="Bold"/>
+                    <t:template>
+                        <Text text="{productName}"/>
+                    </t:template>
+                </t:Column>
+                <t:Column width="8rem" hAlign="End">
+                    <Label text="현재 재고" design="Bold"/>
+                    <t:template>
+                        <ObjectStatus text="{stock}개" state="Warning"/>
+                    </t:template>
+                </t:Column>
+                <t:Column width="8rem" hAlign="End">
+                    <Label text="안전재고" design="Bold"/>
+                        <t:template>
+                            <Text text="{safetyStock}개"/>
+                        </t:template>
+            </t:Column>
+                <t:Column width="8rem" hAlign="Center">
+                    <Label text="상태" design="Bold"/>
+                    <t:template>
+                        <ObjectStatus text="{status}" state="Error" inverted="true"/>
+                    </t:template>
+                </t:Column>
+            </t:columns>
+        </t:Table>
+    </VBox>
+</Panel>
     </Page>
 </mvc:View>

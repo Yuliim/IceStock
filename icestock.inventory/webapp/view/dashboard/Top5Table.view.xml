@@ -1,7 +1,52 @@
 <mvc:View controllerName="icestock.inventory.icestock.inventory.controller.dashboard.Top5Table"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:t="sap.ui.table"
+    xmlns:u="sap.ui.unified"
+	xmlns:c="sap.ui.core">
     <Page title="{i18n>title}">
-        <Text text="Top 5 Table"></Text>
+        <l:Grid containerQuery="true" defaultSpan="XL6 L6 M12 S12" class="sapUiSmallMargin">
+            <Panel>
+                <layoutData>
+                    <l:GridData span="XL4 L4 M12 S12"/>
+                </layoutData>
+                <VBox>
+                    <Title text="인기상품 TOP 5" level="H3"/>
+                    <!-- <Text text="인기상품 TOP 5" class="sapUiTinyMarginBottom"/> -->
+                </VBox>
+                <t:Table rows="{top5>/top5Stock}"
+				        selectionMode="None"
+                        visibleRowCount="5">
+                    
+                    <t:columns>
+                        <t:Column width="3rem" hAlign="Center">
+                            <Label text="순위" />
+                            <t:template>
+                                <Text text="{top5>rank}"/>
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="5.8rem" hAlign="Center">
+                            <Label text="상품명" />
+                            <t:template>
+                                <Text text="{top5>productName}"/>
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="6rem" hAlign="Center">
+                            <Label text="카테고리" />
+                            <t:template>
+                                <Text text="{top5>categoryName}"/>
+                            </t:template>
+                        </t:Column>
+                        <t:Column width="5rem" hAlign="Center">
+                            <Label text="판매수량" />
+                            <t:template>
+                                <Text text="{top5>quantity}"/>
+                            </t:template>
+                        </t:Column>
+                    </t:columns>
+                </t:Table>
+            </Panel>
+        </l:Grid>
     </Page>
 </mvc:View>

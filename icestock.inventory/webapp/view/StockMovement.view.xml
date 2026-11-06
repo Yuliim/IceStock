@@ -112,8 +112,9 @@
                                         placeholder="선택 입력" />
                                 </VBox>
                                 <Button
+                                    id="movementRegisterButton"
                                     class="sapUiMediumMarginTop"
-                                    text="등록하기"
+                                    text="입고 등록하기"
                                     type="Emphasized"
                                     width="100%"
                                     press="onRegisterMovement">

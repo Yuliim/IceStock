@@ -2,13 +2,133 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
     xmlns:core="sap.ui.core"
-    xmlns:t="sap.ui.table">
+    xmlns:t="sap.ui.table"
+    xmlns:l="sap.ui.layout">
     <Page title="입출고 이력">
         <content>
-            <VBox class="stockMovementPage">
-                <Panel class="stockMovementFilterSection">
+            <VBox class="sapUiSmallMargin stockMovementPage">
+                <Panel class="sapUiSmallMarginBottom stockMovementRegisterSection">
                     <content>
-                        
+                        <Toolbar class="stockMovementRegisterToolbar">
+                            <Title text="입출고 등록" level="H2" />
+                        </Toolbar>
+                        <VBox class="sapUiSmallMargin">
+                            <Text
+                                class="sapUiTinyMarginTop sapUiSmallMarginBottom"
+                                text="처리 결과는 현재 재고와 판매 데이터에 즉시 반영됩니다." />
+                            <l:Grid
+                                defaultSpan="XL12 L12 M12 S12"
+                                hSpacing="1.5"
+                                vSpacing="1.5"
+                                width="100%">
+                                <VBox>
+                                    <layoutData>
+                                        <l:GridData span="XL2 L2 M6 S12" />
+                                    </layoutData>
+                                    <Label text="처리 일자" />
+                                    <DatePicker
+                                        id="movementRegisterDate"
+                                        width="100%"
+                                        displayFormat="yyyy-MM-dd"
+                                        valueFormat="yyyy-MM-dd"
+                                        placeholder="날짜 선택" />
+                                </VBox>
+                                <VBox>
+                                    <layoutData>
+                                        <l:GridData span="XL2 L2 M6 S12" />
+                                    </layoutData>
+                                    <Label text="처리 유형" />
+                                    <SegmentedButton
+                                        id="movementRegisterType"
+                                        width="100%"
+                                        select="onRegisterTypeChange">
+                                        <items>
+                                            <SegmentedButtonItem key="IN" text="입고" />
+                                            <SegmentedButtonItem key="OUT" text="출고" />
+                                        </items>
+                                    </SegmentedButton>
+                                </VBox>
+                                <VBox>
+                                    <layoutData>
+                                        <l:GridData span="XL3 L3 M6 S12" />
+                                    </layoutData>
+                                    <Label text="상품 선택" />
+                                    <ComboBox
+                                        id="movementRegisterProduct"
+                                        width="100%"
+                                        placeholder="상품코드 또는 상품명 검색"
+                                        selectionChange="onRegisterProductChange"
+                                        change="onRegisterProductChange"
+                                        items="{inventory>/products}">
+                                        <items>
+                                            <core:Item
+                                                key="{inventory>productId}"
+                                                text="{inventory>productId} · {inventory>productName}" />
+                                        </items>
+                                    </ComboBox>
+                                </VBox>
+                                <VBox>
+                                    <layoutData>
+                                        <l:GridData span="XL2 L2 M6 S12" />
+                                    </layoutData>
+                                    <Label text="처리 수량" />
+                                    <Input
+                                        id="movementRegisterQuantity"
+                                        width="100%"
+                                        type="Number"
+                                        placeholder="수량 입력" />
+                                </VBox>
+                                <VBox>
+                                    <layoutData>
+                                        <l:GridData span="XL3 L3 M6 S12" />
+                                    </layoutData>
+                                    <Label text="처리 사유" />
+                                    <Select id="movementRegisterReason" width="100%">
+                                        <items>
+                                            <core:Item key="PURCHASE" text="매입" />
+                                            <core:Item key="SALE" text="판매" />
+                                            <core:Item key="DISCARD" text="폐기" />
+                                        </items>
+                                    </Select>
+                                </VBox>
+                                <VBox>
+                                    <layoutData>
+                                        <l:GridData span="XL3 L3 M6 S12" />
+                                    </layoutData>
+                                    <Label text="현재 재고" />
+                                    <ObjectStatus
+                                        id="movementRegisterCurrentStock"
+                                        text="상품을 선택하세요"
+                                        state="Information" />
+                                </VBox>
+                                <VBox>
+                                    <layoutData>
+                                        <l:GridData span="XL7 L7 M9 S12" />
+                                    </layoutData>
+                                    <Label text="비고" />
+                                    <Input
+                                        id="movementRegisterNote"
+                                        width="100%"
+                                        placeholder="선택 입력" />
+                                </VBox>
+                                <Button
+                                    id="movementRegisterButton"
+                                    class="sapUiMediumMarginTop"
+                                    text="입고 등록하기"
+                                    type="Emphasized"
+                                    width="100%"
+                                    press="onRegisterMovement">
+                                    <layoutData>
+                                        <l:GridData span="XL2 L2 M3 S12" />
+                                    </layoutData>
+                                </Button>
+                            </l:Grid>
+                        </VBox>
+                    </content>
+                </Panel>
+
+                <Panel class="sapUiSmallMarginBottom stockMovementFilterSection">
+                    <content>
                         <OverflowToolbar class="stockMovementFilterToolbar">
                             <Title text="검색 필터" level="H3" />
                             <ToolbarSeparator />

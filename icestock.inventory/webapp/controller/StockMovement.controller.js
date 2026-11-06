@@ -4,8 +4,9 @@ sap.ui.define([
   "sap/ui/model/FilterOperator",
   "sap/ui/model/FilterType",
   "sap/ui/model/Sorter",
+  "sap/m/MessageBox",
   "sap/m/MessageToast"
-], (BaseController, Filter, FilterOperator, FilterType, Sorter, MessageToast) => {
+], (BaseController, Filter, FilterOperator, FilterType, Sorter, MessageBox, MessageToast) => {
   "use strict";
 
   return BaseController.extend("icestock.inventory.icestock.inventory.controller.StockMovement", {
@@ -16,6 +17,7 @@ sap.ui.define([
         });
         this._sortMovements();
         this.byId("movementRegisterDate").setDateValue(new Date());
+        this._updateRegisterButton();
       },
 
       onFilterChange() {
@@ -33,6 +35,7 @@ sap.ui.define([
       },
 
       onRegisterTypeChange() {
+        this._updateRegisterButton();
         this._updateRegisterStock();
       },
 
@@ -48,12 +51,30 @@ sap.ui.define([
       },
 
       onRegisterMovement() {
-        const oModel = this.getOwnerComponent().getModel("inventory");
         const oFormData = this._getRegisterFormData();
         if (!oFormData) {
           return;
         }
 
+        const { oProduct, iQuantity, sType } = oFormData;
+        const sMovementType = sType === "IN" ? "입고" : "출고";
+        MessageBox.confirm(
+          `${oProduct.productName} 상품을 ${iQuantity}개 ${sMovementType} 등록하시겠습니까?`,
+          {
+            title: "입출고 등록 확인",
+            actions: [MessageBox.Action.OK, MessageBox.Action.CANCEL],
+            emphasizedAction: MessageBox.Action.OK,
+            onClose: (sAction) => {
+              if (sAction === MessageBox.Action.OK) {
+                this._saveMovement(oFormData);
+              }
+            }
+          }
+        );
+      },
+
+      _saveMovement(oFormData) {
+        const oModel = this.getOwnerComponent().getModel("inventory");
         const oQuantityInput = this.byId("movementRegisterQuantity");
         const oNoteInput = this.byId("movementRegisterNote");
         const { oProductContext, oProduct, iQuantity, oDate, sType, sReason } = oFormData;
@@ -85,6 +106,14 @@ sap.ui.define([
         oQuantityInput.setValue("");
         oNoteInput.setValue("");
         MessageToast.show(`${sType === "IN" ? "입고" : "출고"} 등록이 완료되었습니다.`);
+      },
+
+      _updateRegisterButton() {
+        const oButton = this.byId("movementRegisterButton");
+        const sType = this.byId("movementRegisterType").getSelectedKey();
+        if (oButton) {
+          oButton.setText(sType === "OUT" ? "출고 등록하기" : "입고 등록하기");
+        }
       },
 
       _getRegisterFormData() {

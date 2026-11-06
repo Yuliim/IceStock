@@ -11,13 +11,14 @@
 
     <Page title="{i18n>title}">
         <Text text="LowStockTable"></Text>
-        <Panel width="43rem" class="sapUiResponsiveMargin">
-    <VBox>
+        <Panel width="43rem">
+        <VBox>
         <t:Table rows="{/movements}"
             selectionMode="Single"
             paste="onPaste"
             ariaLabelledBy="Title2"
-            visibleRowCount="8">
+            visibleRowCount="8"
+            width="100%">
             <t:extension >
                 <OverflowToolbar style="Clear">
                     <Title id="Title2" text="재고 부족 상품" titleStyle= "H3"  />
@@ -27,16 +28,16 @@
                 <Label text="안전재고 이하의 상품입니다"/>
             </t:extension>
             <t:columns>
-                <t:Column width="5rem" hAlign="End">
+                <t:Column width="5rem" hAlign="Begin">
                     <Label text="상품코드" design="Bold"/>
                     <t:template>
-                        <Text text="{productId}" />
+                        <Text text="{productId}" class="sapMTextNonEmphasized" />
                     </t:template>
                 </t:Column>
-                <t:Column width="10rem" hAlign="Center">
+                <t:Column width="8rem" hAlign="Begin">
                     <Label text="상품명" design="Bold"/>
                     <t:template>
-                        <Text text="{productName}"/>
+                        <Text text="{productName}" class="sapUiBold" />
                     </t:template>
                 </t:Column>
                 <t:Column width="8rem" hAlign="End">

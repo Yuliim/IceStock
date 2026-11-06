@@ -25,7 +25,11 @@
                                         "label": { "formatString": "0" }
                                     },
                                  "categoryAxis": {
-                                        "title": { "visible": false }
+                                        "title": { "visible": false },
+                                       "label" : {
+                                                   "style": {
+                                                   "color": "#c6c1c1"}
+                                                }
                                         },
                                      "plotArea": {
                                  "colorPalette": ["#80d4b1", "#8b9ee2"] } }'>

@@ -13,6 +13,10 @@
 <mvc:View controllerName="icestock.inventory.icestock.inventory.controller.MainView"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
+    <Page id="page" title="{i18n>title}" showHeader="false">
+        <Text text="Main View"></Text>
+        <content>
+            
+        </content>
     </Page>
 </mvc:View>

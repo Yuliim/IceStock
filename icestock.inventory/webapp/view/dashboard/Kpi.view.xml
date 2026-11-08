@@ -1,0 +1,49 @@
+<mvc:View controllerName="icestock.inventory.controller.dashboard.Kpi"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page title="재고 관리">
+
+        <HBox wrap="Wrap" justifyContent="SpaceBetween" class="sapUiSmallMargin">
+
+        <!-- 전체 상품 수-->
+        <Panel headerText="" class="sapUiResponsiveMargin" width="15rem">
+            <VBox class="sapUiSmallMargin">
+                <HBox justifyContent="SpaceBetween" alignItems="Center">
+                    <Text text="전체 상품 수" class="sapUiTinyMarginBottom"/>
+                </HBox>
+                    <ObjectNumber number="{dashboard>/kpis/totalProducts}" unit="개"/>
+                    <Text text="활성화된 상품 기준" />
+            </VBox>
+        </Panel>
+        <Panel headerText="" class="sapUiResponsiveMargin" width="15rem">
+            <VBox class="sapUiSmallMargin">
+                <HBox justifyContent="SpaceBetween" alignItems="Center">
+                    <Text text="총 재고 수량"/>
+                </HBox>
+                    <ObjectNumber number="{dashboard>/kpis/totalStock}" unit="개"/>
+                    <Text text="전일 대비 +25개"/>
+            </VBox>
+        </Panel>
+        <Panel headerText="" class="sapUiResponsiveMargin" width="15rem">
+            <VBox class="sapUiSmallMargin">
+                <HBox justifyContent="SpaceBetween" alignItems="Center">
+                    <Text text="재고 부족 상품"/>
+                </HBox>
+                    <ObjectNumber number="{dashboard>/kpis/lowStockProducts}" unit="개"/>
+                    <Text text="확인이 필요한 상품"/>
+            </VBox>
+        </Panel>
+        <Panel headerText="" class="sapUiResponsiveMargin" width="15rem">
+            <VBox class="sapUiSmallMargin">
+                <HBox justifyContent="SpaceBetween" alignItems="Center">
+                    <Text text="이번 달 입출고"/>
+                </HBox>
+                    <ObjectNumber number="{dashboard>/kpis/monthlyMovements}" unit="건"/>
+                    <Text text="당월 입고 · 출고 "/>
+            </VBox>
+        </Panel>
+        </HBox>
+    </Page>
+
+    
+</mvc:View>

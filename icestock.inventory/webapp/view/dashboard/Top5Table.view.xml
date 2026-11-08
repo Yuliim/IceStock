@@ -1,0 +1,7 @@
+<mvc:View controllerName="icestock.inventory.icestock.inventory.controller.dashboard.Top5Table"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page title="{i18n>title}">
+        <Text text="Top 5 Table"></Text>
+    </Page>
+</mvc:View>

@@ -3,11 +3,11 @@
     xmlns:core="sap.ui.core"
     xmlns="sap.m">
     <Page title="{i18n>title}">
-        <!-- KPI 카드 4개를 가로로 나란히 (자리가 모자라면 줄바꿈) -->
-    <HBox wrap="Wrap" class="sapUiSmallMargin">
+        <!-- 가로로 나란히 -->
+    <HBox class="sapUiSmallMargin">
  
         <!--전체 상품 수-->
-        <Panel class="sapUiResponsiveMargin" width="14rem">
+        <Panel class="sapUiResponsiveMargin" width="15rem">
             <VBox class="sapUiSmallMargin">
                 <HBox justifyContent="SpaceBetween" alignItems="Center">
                     <Text text="전체 상품 수"/>
@@ -19,7 +19,7 @@
         </Panel>
  
         <!-- 총 재고 수량-->
-        <Panel class="sapUiResponsiveMargin" width="14rem">
+        <Panel class="sapUiResponsiveMargin" width="15rem">
             <VBox class="sapUiSmallMargin">
                 <HBox justifyContent="SpaceBetween" alignItems="Center">
                     <Text text="총 재고 수량"/>
@@ -31,7 +31,7 @@
         </Panel>
  
         <!-- 재고 부족 상품-->
-        <Panel class="sapUiResponsiveMargin" width="14rem">
+        <Panel class="sapUiResponsiveMargin" width="15rem">
             <VBox class="sapUiSmallMargin">
                 <HBox justifyContent="SpaceBetween" alignItems="Center">
                     <Text text="재고 부족 상품"/>
@@ -42,8 +42,8 @@
             </VBox>
         </Panel>
  
-        <!-- 이번 달 입출고 + 버튼 (누르면 입출고 화면으로 이동) -->
-        <Panel class="sapUiResponsiveMargin" width="14rem">
+        <!-- 이번 달 입출고 -->
+        <Panel class="sapUiResponsiveMargin" width="15rem">
             <VBox class="sapUiSmallMargin">
                 <HBox justifyContent="SpaceBetween" alignItems="Center">
                     <Text text="이번 달 입출고"/>
@@ -53,7 +53,6 @@
                 <Text text="당월 입고·출고 처리 건수"/>
             </VBox>
         </Panel>
- 
     </HBox>
     </Page>
 </mvc:View>

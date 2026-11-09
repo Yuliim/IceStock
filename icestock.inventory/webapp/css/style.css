@@ -62,3 +62,48 @@
     font-size: 0.8125rem !important;
     font-weight: 500 !important;
 }
+
+/* LowStockTable: 글씨 색상 변경&제목 글씨 줄간격 맞춤 */
+.lowStockTitle { color: #1d2b45 !important; }
+.lowStockSubtitle {
+    margin-inline-start: 1rem;
+    color: #8a9ab4 !important;
+}
+.lowStockHeaderLabel,
+.lowStockHeaderLabel .sapMLabelTextWrapper {
+    color: #8a94a6 !important;
+    font-size: 0.8125rem !important;
+}
+.lowStockCode { color: #8a9ab4 !important; }
+.lowStockName { color: #1d2b45 !important; font-weight: 600 !important; }
+.lowStockQuantity { color: #f06b68 !important; }
+.lowStockSafety { color: #536a8d !important; }
+.lowStockStatus .sapMObjStatusText {
+    color: #e76866 !important;
+    font-size: 0.75rem !important;
+}
+ /* "부족" 글씨 둥근 모양으로 변경 */
+.lowStockStatus {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-width: 2.7rem;
+    padding: 0.25rem 0.55rem;
+    border-radius: 999px;
+    background-color: #fff0ef !important;
+}
+
+/* LowStockTable: 내부 표 선 제거, 컬럼 제목 행 강조 */
+.lowStockTable .sapUiTableCell,
+.lowStockTable .sapUiTableCtrl td,
+.lowStockTable .sapUiTableHeaderCell,
+.lowStockTable .sapUiTableColHdr,
+.lowStockTable .sapUiTableRowHdr {
+    border: none !important;
+}
+.lowStockTable .sapUiTableColHdrCnt,
+.lowStockTable .sapUiTableHeaderRow,
+.lowStockTable .sapUiTableHeaderCell {
+    background-color: #f7f8fa !important;
+}

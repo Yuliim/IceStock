@@ -9,58 +9,44 @@
     xmlns:layout="sap.ui.layout">
 
     <Page title="{i18n>title}">
-        <Text text="Monthly Chart"></Text>
         <Panel width="60rem">
-       <VBox class="sapUiResponsiveMargin">
-        <Title text="월별 입출고 현황" titleStyle="H3" />
-        <Label text="최근 6개월간 입고 및 출고 수량" class="sapUiSmallMarginBottom" />
-        <layout:Grid ></layout:Grid>
-        <!-- VizFrame은 dataset의 차원과 수치를 feeds가 지정한 축에 그린다. -->
-        <viz:VizFrame id="idVizFrame" 
-                      vizType="column"
-                      width="800px"
-                      height="400px"
-                      vizProperties='{  "title": { "visible": false },
-                                    "valueAxis": {
-                                        "title": { "visible": false },
-                                        "label": { "formatString": "0" }
-                                    },
-                                 "categoryAxis": {
-                                        "title": { "visible": false },
-                                       "label" : {
-                                                   "style": {
-                                                   "color": "#c6c1c1"}
-                                                }
-                                        },
-                                     "plotArea": {
-                                 "colorPalette": ["#80d4b1", "#8b9ee2"] } }'
-                                 >
-            <viz:dataset>
-                <!-- 현재는 기본 모델의 movements를 사용하며 각 행에 date, inQty, outQty가 필요하다. -->
-                <!-- 컨트롤러가 별도 chartModel/chartData를 만든다면 이 data 경로도 그 모델에 맞춰야 한다. -->
-                <viz.data:FlattenedDataset data="{/movements}">
-                    <viz.data:dimensions>
-                        <!-- 월 값은 가로축 항목으로 사용한다. -->
-                        <viz.data:DimensionDefinition name="월" value="{date}" />
-                    </viz.data:dimensions>
-                    <viz.data:measures>
-                        <!-- 입고와 출고 수량은 세로축의 두 계열로 사용한다. -->
-                        <viz.data:MeasureDefinition name="입고" value="{inQty}" />
-                        <viz.data:MeasureDefinition name="출고" value="{outQty}" />
-                    </viz.data:measures>
-                </viz.data:FlattenedDataset>
-            </viz:dataset>
-            <viz:feeds>
-                <!-- 위에서 정의한 두 수치 계열을 값 축, 월을 범주 축에 연결한다. -->
-                <viz.feeds:FeedItem uid="valueAxis" 
-                                    type="Measure" 
-                                    values="입고,출고" />
-                <viz.feeds:FeedItem uid="categoryAxis" 
-                                    type="Dimension" 
-                                    values="월" />
-            </viz:feeds>
-        </viz:VizFrame>
-       </VBox>
-    </Panel>
+            <VBox>
+                <Title text="월별 입출고 현황" titleStyle="H3" />
+                <Label text="최근 6개월간 입고 및 출고 수량" class="sapUiSmallMarginBottom" />
+                <viz:VizFrame id="idVizFrame" 
+                            vizType="column"
+                            vizProperties='{  "title": { "visible": false },
+                                            "valueAxis": {
+                                                "title": { "visible": false },
+                                                "label": { "formatString": "0" }
+                                            },
+                                        "categoryAxis": {
+                                                "title": { "visible": false }
+                                                } ,
+                                            "plotArea": {
+                                        "colorPalette": ["#80d4b1", "#8b9ee2"] } }'
+                                        >
+                    <viz:dataset>
+                        <viz.data:FlattenedDataset data="{monthly>/rows}">
+                            <viz.data:dimensions>
+                                <viz.data:DimensionDefinition name="월" value="{monthly>month}" />
+                            </viz.data:dimensions>
+                            <viz.data:measures>
+                                <viz.data:MeasureDefinition name="입고" value="{monthly>inQty}" />
+                                <viz.data:MeasureDefinition name="출고" value="{monthly>outQty}" />
+                            </viz.data:measures>
+                        </viz.data:FlattenedDataset>
+                    </viz:dataset>
+                    <viz:feeds>
+                        <viz.feeds:FeedItem uid="valueAxis" 
+                                            type="Measure" 
+                                            values="입고,출고" />
+                        <viz.feeds:FeedItem uid="categoryAxis" 
+                                            type="Dimension" 
+                                            values="월" />
+                    </viz:feeds>
+                </viz:VizFrame>
+            </VBox>
+        </Panel>
     </Page>
 </mvc:View>

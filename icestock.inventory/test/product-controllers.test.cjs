@@ -11,6 +11,7 @@ class Model {
   constructor(data = {}) { this.data = data; }
   getData() { return this.data; }
   setData(data) { this.data = data; }
+  dataLoaded() { return Promise.resolve(); }
   setSizeLimit() {}
   attachRequestCompleted() {}
   detachRequestCompleted() {}
@@ -32,6 +33,17 @@ function setup(file, data) {
   const models = {};
   const warnings = [];
   const routes = [];
+  const eventListeners = [];
+  const eventBus = {
+    subscribe: (channel, event, listener, context) => eventListeners.push({ channel, event, listener, context }),
+    unsubscribe: (channel, event, listener, context) => {
+      const index = eventListeners.findIndex((item) => item.channel === channel && item.event === event && item.listener === listener && item.context === context);
+      if (index >= 0) { eventListeners.splice(index, 1); }
+    },
+    publish: (channel, event, ...args) => eventListeners
+      .filter((item) => item.channel === channel && item.event === event)
+      .forEach((item) => item.listener.apply(item.context, args))
+  };
   const box = {
     warning: (message) => warnings.push(message), information() {},
     Action: { OK: "OK" }, confirm: (message, options) => options.onClose("OK")
@@ -44,19 +56,56 @@ function setup(file, data) {
     } } }
   });
   controller.getView = () => ({ setModel: (model, name) => { models[name] = model; }, getModel: (name) => models[name] });
-  controller.getOwnerComponent = () => ({ getModel: () => inventory, getRouter: () => ({
+  controller.getOwnerComponent = () => ({ getModel: () => inventory, getEventBus: () => eventBus, getRouter: () => ({
     getRoute: () => ({ attachPatternMatched() {}, detachPatternMatched() {} }),
     navTo: (...args) => routes.push(args)
   }) });
   controller.onInit();
   controller.onCloseDialog = () => {};
-  return { controller, inventory, models, warnings, routes };
+  return { controller, inventory, models, warnings, routes, eventBus };
 }
 
 // UI에서 상품 행의 버튼을 누른 것처럼 이벤트의 bindingContext를 만들어 준다.
 function eventFor(product) {
   return { getSource: () => ({ getBindingContext: () => ({ getObject: () => product }) }) };
 }
+
+test("재고 부족 테이블은 안전재고 미만 상품만 부족 상태로 제공", async () => {
+  const data = { products: [
+    { productId: "LOW", stock: 4, safetyStock: 5 },
+    { productId: "EQUAL", stock: 5, safetyStock: 5 },
+    { productId: "ENOUGH", stock: 6, safetyStock: 5 },
+    { productId: "MOVEMENT", stock: 8, safetyStock: 5 }
+  ], movements: [
+    { movementId: "M001", productId: "MOVEMENT", afterStock: 8 }
+  ] };
+  const { inventory, models, eventBus } = setup("dashboard/LowStockTable", data);
+  await new Promise((resolve) => setImmediate(resolve));
+
+  const rows = models.lowStock.getProperty("/products");
+  assert.equal(rows.length, 1);
+  assert.equal(rows[0].productId, "LOW");
+  assert.equal(rows[0].status, "부족");
+
+  inventory.setProperty("/products/1/stock", 4);
+  eventBus.publish("inventory", "changed");
+  const updatedRows = models.lowStock.getProperty("/products");
+  assert.equal(updatedRows.length, 2);
+  assert.equal(updatedRows[1].productId, "EQUAL");
+
+  inventory.setProperty("/movements/0/afterStock", 4);
+  eventBus.publish("inventory", "changed");
+  const movementUpdatedRows = models.lowStock.getProperty("/products");
+  assert.equal(movementUpdatedRows.length, 3);
+  assert.equal(movementUpdatedRows[2].productId, "MOVEMENT");
+  assert.equal(movementUpdatedRows[2].stock, 4);
+});
+
+test("재고 부족 테이블 전체 보기는 상품 관리 화면으로 이동", () => {
+  const { controller, routes } = setup("dashboard/LowStockTable");
+  controller.onShowAllProducts();
+  assert.deepEqual(routes, [["product"]]);
+});
 
 // 각 test는 setup으로 독립 데이터를 만들고 assert로 기대 결과를 확인한다.
 // 실행: 앱 루트에서 node --test test/product-controllers.test.cjs

@@ -5,7 +5,7 @@
     xmlns:t="sap.ui.table"
     xmlns:u="sap.ui.unified"
 	xmlns:c="sap.ui.core">
-    <Page title="{i18n>title}">
+    <Panel width="100%">
         <l:Grid containerQuery="true" defaultSpan="XL6 L6 M12 S12" class="sapUiSmallMargin">
             <Panel>
                 <layoutData>
@@ -57,5 +57,5 @@
                 </t:Table>
             </Panel>
         </l:Grid>
-    </Page>
+    </Panel>
 </mvc:View>

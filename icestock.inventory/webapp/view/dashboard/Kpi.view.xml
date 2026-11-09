@@ -2,7 +2,7 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:core="sap.ui.core"
     xmlns="sap.m">
-    <Page title="{i18n>title}">
+    <Panel width="100%">
         <!-- 가로로 나란히 -->
     <HBox class="sapUiSmallMargin">
 
@@ -54,5 +54,5 @@
             </VBox>
         </Panel>
     </HBox>
-    </Page>
+    </Panel>
 </mvc:View>

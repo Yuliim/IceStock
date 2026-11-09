@@ -1,22 +1,29 @@
-<!--MainView.xlm
-= 대시보드 화면 조립 
-: C·D·E의 하위 View 배치
-(하위 View를 추가할 때 사용하는 코드 예시) -->
-    <!-- KPI 하위 View 불러오기 -->
-    <!-- <mvc:XMLView
-        viewName="icestock.inventory.view.dashboard.Kpi" /> -->
-
-    <!-- 월별 입출고 차트 불러오기 -->
-    <!-- <mvc:XMLView
-        viewName="icestock.inventory.view.dashboard.MonthlyChart" /> -->
-
 <mvc:View controllerName="icestock.inventory.icestock.inventory.controller.MainView"
     xmlns:mvc="sap.ui.core.mvc"
+    xmlns:l="sap.ui.layout"
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}" showHeader="false">
-        <Text text="Main View"></Text>
         <content>
-            
+            <l:Grid
+                containerQuery="true"
+                defaultSpan="XL6 L6 M12 S12"
+                class="sapUiSmallMargin">
+                <Panel width="100%">
+                    <layoutData>
+                        <l:GridData span="XL12 L12 M12 S12"/>
+                    </layoutData>
+                    <mvc:XMLView
+                        viewName="icestock.inventory.icestock.inventory.view.dashboard.Kpi"/>
+                </Panel>
+                <mvc:XMLView
+                    viewName="icestock.inventory.icestock.inventory.view.dashboard.MonthlyChart"/>
+                <mvc:XMLView
+                    viewName="icestock.inventory.icestock.inventory.view.dashboard.CategoryChart"/>
+                <mvc:XMLView
+                    viewName="icestock.inventory.icestock.inventory.view.dashboard.LowStockTable"/>
+                <mvc:XMLView
+                    viewName="icestock.inventory.icestock.inventory.view.dashboard.Top5Table"/>
+            </l:Grid>
         </content>
     </Page>
 </mvc:View>

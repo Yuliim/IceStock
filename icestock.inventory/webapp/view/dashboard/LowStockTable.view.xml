@@ -5,8 +5,7 @@
     xmlns:u="sap.ui.unified"
 	xmlns:c="sap.ui.core"
     xmlns:layout="sap.ui.layout">
-    <Page title="{i18n>title}">
-        <Text text="LowStockTable"></Text>
+    <Panel width="100%">
             <Panel width="37rem">
                 <VBox>
                     <layout:Grid defaultSpan="L6 M12 S12" class="sapUiContentPadding">
@@ -68,5 +67,5 @@
                 </layout:Grid>
             </VBox>
         </Panel>
-    </Page>
+    </Panel>
 </mvc:View>

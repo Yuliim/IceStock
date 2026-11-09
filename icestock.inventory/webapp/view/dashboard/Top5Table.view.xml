@@ -31,13 +31,13 @@
                         </Text>
                     </t:template>
                 </t:Column>
-                <t:Column width="6rem" hAlign="Center">
+                <t:Column hAlign="Center">
                     <Label text="상품명" />
                     <t:template>
                         <Text text="{top5>productName}"/>
                     </t:template>
                 </t:Column>
-                <t:Column width="5rem" hAlign="Center">
+                <t:Column hAlign="Center">
                     <Label text="카테고리" />
                     <t:template>
                         <Text text="{top5>categoryName}" class="catTag">
@@ -47,7 +47,7 @@
                         </Text>
                     </t:template>
                 </t:Column>
-                <t:Column  hAlign="Center">
+                <t:Column hAlign="Center">
                     <Label text="판매수량" />
                     <t:template>
                         <Text text="{top5>quantity}개"/>

@@ -1,5 +1,6 @@
 <mvc:View controllerName="icestock.inventory.icestock.inventory.controller.dashboard.CategoryChart"
     xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
     xmlns="sap.m"
     xmlns:l="sap.ui.layout"
     xmlns:t="sap.ui.table"
@@ -11,29 +12,25 @@
         
         <l:Grid containerQuery="true" defaultSpan="XL6 L6 M12 S12" class="sapUiSmallMargin">
 
-            <!--  (D 월별 입출고 자리) -->
-            <Panel headerText="월별 입출고 현황">
-                <layoutData>
-                    <l:GridData span="XL8 L8 M12 S12"/>
-                </layoutData>
-                <Text text="차트 D 자리"/>
-            </Panel>
-
-            <!-- 오른쪽: 카테고리별 재고 -->
             <Panel>
                 <layoutData>
                     <l:GridData span="XL4 L4 M12 S12"/>
                 </layoutData>
                 <VBox>
-                    <Title text="카테고리별 재고" level="H3"/>
+                    <Title text="카테고리별 재고" level="H3" />
                     <Text text="현재 재고 수량 기준" class="sapUiTinyMarginBottom" />
                 </VBox>
+                <HBox alignItems="Center" justifyContent="SpaceAround" width="100%">
                 <viz:VizFrame id="idVizFrameE1"
                     vizType="donut"
-                    width="100%" height="320px"
+                    width="180px" height="180px"
                     uiConfig="{applicationSet:'fiori'}"
-                    vizProperties="{ title: {text : '', visible : false}}"
-                    legendVisible="true" >
+                    vizProperties="{ title: {visible: false}, legend: {visible: false},
+                    general: {layout: {padding: 0, paddingTop: 0, paddingBottom: 0, paddingLeft: 0, paddingRight: 0}},
+                    plotArea: {colorPalette: ['#6CC4A4', '#94A9E0', '#F4A86A', '#B9A2E0', '#F5D06F', '#F18A92'], dataLabel: {visible: false}} }">
+                    <viz:layoutData>
+                        <FlexItemData growFactor="0" shrinkFactor="0" />
+                    </viz:layoutData>
                     <viz:dataset>
                         <viz.data:FlattenedDataset data="{chart>/categoryStock}">
                             <viz.data:dimensions>
@@ -52,6 +49,28 @@
                         <viz:Popover id="idPopOverE1"/>
                     </viz:dependents>
                 </viz:VizFrame>
+    
+                <!-- 커스텀 범례: 색 점 + 카테고리명 ... 개수(오른쪽 정렬) -->
+                <VBox items="{chart>/categoryStock}" width="9rem">
+                    <items>
+                        <HBox justifyContent="SpaceBetween" alignItems="Center" width="100%" class="sapUiTinyMarginBottom">
+                            <HBox alignItems="Center">
+                                <core:Icon src="sap-icon://circle-task-2" size="0.5rem"
+                                    color="{= ${chart>categoryName}.indexOf('바') === 0 ? '#6CC4A4'
+                                        : ${chart>categoryName}.indexOf('콘') === 0 ? '#94A9E0'
+                                        : ${chart>categoryName}.indexOf('샌드') === 0 ? '#F4A86A'
+                                        : ${chart>categoryName}.indexOf('컵') === 0 ? '#B9A2E0'
+                                        : ${chart>categoryName}.indexOf('튜브') === 0 ? '#F5D06F'
+                                        : '#F18A92' }" />
+                                <FormattedText class="sapUiTinyMarginBegin"
+                                    htmlText="{= '&lt;span style=&quot;font-size:0.75rem&quot;&gt;' + ${chart>categoryName} + '&lt;/span&gt;' }" />
+                            </HBox>
+                            <FormattedText
+                                htmlText="{= '&lt;strong style=&quot;font-size:0.75rem&quot;&gt;' + ${chart>stock} + '개&lt;/strong&gt;' }" />
+                        </HBox>
+                    </items>
+                </VBox>
+                </HBox>
             </Panel>
         </l:Grid>
 

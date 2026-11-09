@@ -12,7 +12,7 @@
                 <!-- isNew=true인 등록 모드에서만 코드와 단가를 입력할 수 있다. -->
                 <!-- labelFor는 Label과 입력 컨트롤을 연결한다. 실제 필수값 검증은 onSave가 맡는다. -->
                 <Label text="상품코드" required="true" labelFor="productCodeInput" />
-                <Input id="productCodeInput" value="{form>/productId}" enabled="{form>/isNew}" />
+                <Input id="productCodeInput" value="{form>/productId}" enabled="{form>/isNew}" editable="false" />
                 <Label text="상품명" required="true" labelFor="productNameInput" class="sapUiTinyMarginTop" />
                 <Input id="productNameInput" value="{form>/productName}" placeholder="상품명을 입력하세요" />
                 <!-- 표시할 이름과 저장할 categoryId를 분리한다. -->

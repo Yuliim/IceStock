@@ -35,9 +35,9 @@
                                  "colorPalette": ["#80d4b1", "#8b9ee2"] } }'
                                  >
             <viz:dataset>
-                <viz.data:FlattenedDataset data="{/MonthlyChart}">
+                <viz.data:FlattenedDataset data="{/movements}">
                     <viz.data:dimensions>
-                        <viz.data:DimensionDefinition name="월" value="{month}" />
+                        <viz.data:DimensionDefinition name="월" value="{date}" />
                     </viz.data:dimensions>
                     <viz.data:measures>
                         <viz.data:MeasureDefinition name="입고" value="{inQty}" />

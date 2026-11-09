@@ -235,6 +235,7 @@ sap.ui.define([
       // 원본과 화면용 모델은 별개이므로 저장 후 목록도 다시 계산해야 한다.
       this.onCloseDialog();
       this._refreshProducts();
+      this.getOwnerComponent().getEventBus().publish("inventory", "changed");
       MessageToast.show("상품 정보를 저장했습니다.");
     },
 
@@ -250,6 +251,7 @@ sap.ui.define([
           if (index >= 0) {
             this._inventory.setProperty("/products/" + index + "/active", false);
             this._refreshProducts();
+            this.getOwnerComponent().getEventBus().publish("inventory", "changed");
             MessageToast.show("상품이 비활성화되었습니다.");
           }
         }

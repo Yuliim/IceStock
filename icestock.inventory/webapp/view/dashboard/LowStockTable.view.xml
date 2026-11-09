@@ -7,8 +7,13 @@
     xmlns:layout="sap.ui.layout">
     <Panel width="100%">
         <VBox>
-            <HBox justifyContent="SpaceBetween" alignItems="Center">
-                <Title id="Title2" text="재고 부족 상품" titleStyle="H3" />
+            <HBox justifyContent="SpaceBetween" alignItems="Start">
+                <VBox>
+                    <Title id="Title2" text="재고 부족 상품" titleStyle="H3" />
+                    <Label
+                        text="안전재고 미만의 상품입니다"
+                        class="sapUiTinyMarginBottom"/>
+                </VBox>
                 <Button
                     text="전체 보기"
                     press=".onShowAllProducts"
@@ -17,9 +22,6 @@
                     icon="sap-icon://arrow-right"
                     class="custom-gray-btn"/>
             </HBox>
-            <Label
-                text="안전재고 미만의 상품입니다"
-                class="sapUiTinyMarginBottom"/>
         </VBox>
 
         <VBox>

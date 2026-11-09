@@ -5,9 +5,11 @@
         <content>
             <VBox width="100%" class="sapUiSmallMargin">
                 <HBox width="100%" class="sapUiSmallMarginBottom">
-                    <mvc:XMLView
-                        width="100%"
-                        viewName="icestock.inventory.icestock.inventory.view.dashboard.Kpi"/>
+                    <Panel width="100%">
+                        <mvc:XMLView
+                            width="100%"
+                            viewName="icestock.inventory.icestock.inventory.view.dashboard.Kpi"/>
+                    </Panel>
                 </HBox>
                 <HBox width="100%" alignItems="Stretch" class="sapUiSmallMarginBottom">
                     <Panel width="auto" height="100%" class="sapUiSmallMarginBeginEnd">

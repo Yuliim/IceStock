@@ -11,10 +11,11 @@
                 <layoutData>
                     <l:GridData span="XL4 L4 M12 S12"/>
                 </layoutData>
-                <VBox>
+                <HBox justifyContent="SpaceBetween">
                     <Title text="인기상품 TOP 5" level="H3"/>
-                    <!-- <Text text="인기상품 TOP 5" class="sapUiTinyMarginBottom"/> -->
-                </VBox>
+                    <Button text="전체보기" type="Transparent" 
+                    icon="sap-icon://feeder-arrow" iconFirst="false" press=".onTop5"/>
+                </HBox>
                 <t:Table rows="{top5>/top5Stock}"
 				        selectionMode="None"
                         visibleRowCount="5">
@@ -26,19 +27,19 @@
                                 <Text text="{top5>rank}"/>
                             </t:template>
                         </t:Column>
-                        <t:Column width="5.8rem" hAlign="Center">
+                        <t:Column width="6rem" hAlign="Center">
                             <Label text="상품명" />
                             <t:template>
                                 <Text text="{top5>productName}"/>
                             </t:template>
                         </t:Column>
-                        <t:Column width="6rem" hAlign="Center">
+                        <t:Column width="5rem" hAlign="Center">
                             <Label text="카테고리" />
                             <t:template>
                                 <Text text="{top5>categoryName}"/>
                             </t:template>
                         </t:Column>
-                        <t:Column width="5rem" hAlign="Center">
+                        <t:Column  hAlign="Center">
                             <Label text="판매수량" />
                             <t:template>
                                 <Text text="{top5>quantity}"/>

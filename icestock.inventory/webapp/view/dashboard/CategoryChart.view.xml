@@ -25,15 +25,18 @@
                     <l:GridData span="XL4 L4 M12 S12"/>
                 </layoutData>
                 <VBox>
-                    <Title text="카테고리별 재고" level="H3"/>
+                    <HBox justifyContent="SpaceBetween">
+                    <Title text="카테고리별 재고" level="H3" />
+                    <Button text="···" type="Transparent" press=".onCategory"  />
+                    </HBox>
                     <Text text="현재 재고 수량 기준" class="sapUiTinyMarginBottom" />
                 </VBox>
                 <viz:VizFrame id="idVizFrameE1"
                     vizType="donut"
-                    width="100%" height="320px"
+                    width="100%" height="240px"
                     uiConfig="{applicationSet:'fiori'}"
-                    vizProperties="{ title: {text : '', visible : false}}"
-                    legendVisible="true" >
+                    vizProperties="{ title: {visible: false}, legendGroup: {layout: {position: 'right'}}, 
+                    legend: {title: {visible: false}, label: {style: {fontSize: '13px'}}} }">
                     <viz:dataset>
                         <viz.data:FlattenedDataset data="{chart>/categoryStock}">
                             <viz.data:dimensions>

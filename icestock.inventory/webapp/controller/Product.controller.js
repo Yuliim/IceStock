@@ -41,6 +41,9 @@ sap.ui.define([
       if (query.status === "low") {
         model.setProperty("/status", "부족");
         model.setProperty("/sort", "LOW");
+      } else {
+        model.setProperty("/status", "ALL");
+        model.setProperty("/sort", "DEFAULT");
       }
 
       this._refreshProducts();

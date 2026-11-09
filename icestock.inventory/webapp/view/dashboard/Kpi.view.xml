@@ -3,11 +3,18 @@
     xmlns:core="sap.ui.core"
     xmlns="sap.m">
     <Panel width="100%">
-        <!-- 가로로 나란히 -->
-    <HBox class="sapUiSmallMargin">
+    
+    <HBox
+        width="100%"
+        justifyContent="SpaceBetween"
+        alignItems="Stretch"
+        wrap="Wrap">
 
         <!--전체 상품 수-->
-        <Panel class="sapUiResponsiveMargin" width="15rem">
+        <Panel class="sapUiSmallMarginBeginEnd" width="auto">
+            <layoutData>
+                <FlexItemData growFactor="1" shrinkFactor="1" baseSize="0"/>
+            </layoutData>
             <VBox class="sapUiSmallMargin">
                 <HBox justifyContent="SpaceBetween" alignItems="Center">
                     <Text text="전체 상품 수"/>
@@ -19,7 +26,10 @@
         </Panel>
 
         <!-- 총 재고 수량-->
-        <Panel class="sapUiResponsiveMargin" width="15rem">
+        <Panel class="sapUiSmallMarginBeginEnd" width="auto">
+            <layoutData>
+                <FlexItemData growFactor="1" shrinkFactor="1" baseSize="0"/>
+            </layoutData>
             <VBox class="sapUiSmallMargin">
                 <HBox justifyContent="SpaceBetween" alignItems="Center">
                     <Text text="총 재고 수량"/>
@@ -31,7 +41,10 @@
         </Panel>
 
         <!-- 재고 부족 상품-->
-        <Panel class="sapUiResponsiveMargin" width="15rem">
+        <Panel class="sapUiSmallMarginBeginEnd" width="auto">
+            <layoutData>
+                <FlexItemData growFactor="1" shrinkFactor="1" baseSize="0"/>
+            </layoutData>
             <VBox class="sapUiSmallMargin">
                 <HBox justifyContent="SpaceBetween" alignItems="Center">
                     <Text text="재고 부족 상품"/>
@@ -43,7 +56,10 @@
         </Panel>
 
         <!-- 이번 달 입출고 -->
-        <Panel class="sapUiResponsiveMargin" width="15rem">
+        <Panel class="sapUiSmallMarginBeginEnd" width="auto">
+            <layoutData>
+                <FlexItemData growFactor="1" shrinkFactor="1" baseSize="0"/>
+            </layoutData>
             <VBox class="sapUiSmallMargin">
                 <HBox justifyContent="SpaceBetween" alignItems="Center">
                     <Text text="이번 달 입출고"/>

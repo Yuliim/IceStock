@@ -121,6 +121,7 @@ sap.ui.define([
         });
         oModel.setProperty("/movements", aMovements);
         this._sortMovements();
+        this.getOwnerComponent().getEventBus().publish("inventory", "changed");
         this._updateRegisterStock();
         oQuantityInput.setValue("");
         oNoteInput.setValue("");

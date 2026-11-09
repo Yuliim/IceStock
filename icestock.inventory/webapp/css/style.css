@@ -63,6 +63,21 @@
     font-weight: 500 !important;
 }
 
+/* Top5Table: 컬럼 제목과 본문 구분선 */
+.top5Table .sapUiTableHeaderCell,
+.top5Table .sapUiTableColHdr,
+.top5Table .sapUiTableColHdrCnt {
+    border-bottom: 1px solid #d9dfe8 !important;
+}
+
+.top5Table .sapUiTableCell {
+    border-right: 1px solid #edf0f4 !important;
+}
+
+.top5Table .sapUiTableCell:last-child {
+    border-right: none !important;
+}
+
 /* LowStockTable: 글씨 색상 변경&제목 글씨 줄간격 맞춤 */
 .lowStockTitle { color: #1d2b45 !important; }
 .lowStockSubtitle {

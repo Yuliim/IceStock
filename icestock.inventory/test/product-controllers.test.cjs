@@ -104,7 +104,8 @@ test("재고 부족 테이블은 안전재고 미만 상품만 부족 상태로 
 test("재고 부족 테이블 전체 보기는 상품 관리 화면으로 이동", () => {
   const { controller, routes } = setup("dashboard/LowStockTable");
   controller.onShowAllProducts();
-  assert.deepEqual(routes, [["product"]]);
+  assert.equal(routes[0][0], "product");
+  assert.equal(routes[0][1]["?query"].status, "low");
 });
 
 // 각 test는 setup으로 독립 데이터를 만들고 assert로 기대 결과를 확인한다.

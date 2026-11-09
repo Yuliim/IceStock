@@ -90,7 +90,7 @@
         },
         {
           "name": "product",
-          "pattern": "product",
+          "pattern": "product:?query:",
           "target": "product"
         },
         {

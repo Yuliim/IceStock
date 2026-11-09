@@ -29,7 +29,11 @@ sap.ui.define([
       },
 
       onShowAllProducts() {
-        this.getOwnerComponent().getRouter().navTo("product");
+        this.getOwnerComponent().getRouter().navTo("product", {
+          "?query": {
+            status: "low"
+          }
+        });
       },
 
       _refreshLowStockProducts() {

@@ -13,7 +13,7 @@
             
             <HBox width="100%">
             <!--전체 상품 수-->
-            <Panel class="sapUiSmallMargin" width="auto">
+            <Panel>
                 <layoutData>
                     <FlexItemData growFactor="1" shrinkFactor="1" baseSize="0"/>
                 </layoutData>
@@ -24,12 +24,11 @@
                     </HBox>
                     <Label text="활성화된 상품 기준"/>  
                     <ObjectNumber number="{kpi>/productCount}" unit="개" class="sapUiSmallMarginTopBottom"/>
-                    
                 </VBox>
             </Panel>
 
             <!-- 총 재고 수량-->
-            <Panel class="sapUiSmallMargin" width="auto">
+            <Panel>
                 <layoutData>
                     <FlexItemData growFactor="1" shrinkFactor="1" baseSize="0"/>
                 </layoutData>
@@ -44,7 +43,7 @@
             </Panel>
 
             <!-- 재고 부족 상품-->
-            <Panel class="sapUiSmallMargin" width="auto">
+            <Panel>
                 <layoutData>
                     <FlexItemData growFactor="1" shrinkFactor="1" baseSize="0"/>
                 </layoutData>
@@ -60,7 +59,7 @@
             </Panel>
 
             <!-- 이번 달 입출고 -->
-            <Panel class="sapUiSmallMargin" width="auto">
+            <Panel>
                 <layoutData>
                     <FlexItemData growFactor="1" shrinkFactor="1" baseSize="0"/>
                 </layoutData>

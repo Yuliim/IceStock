@@ -6,13 +6,17 @@
     xmlns:u="sap.ui.unified"
 	xmlns:c="sap.ui.core">
     <Panel width="100%">
-        <l:Grid containerQuery="true" defaultSpan="XL6 L6 M12 S12" class="sapUiSmallMargin">
-            <Panel>
+            
                 <layoutData>
                     <l:GridData span="XL4 L4 M12 S12"/>
                 </layoutData>
                 <HBox justifyContent="SpaceBetween" alignItems="Center">
-                    <Title text="누적 인기상품 TOP 5" level="H6"/>
+                    <VBox>
+                        <Title text="누적 인기상품 TOP 5" titleStyle="H3"/>
+                        <Label
+                            text="누적 판매수량 기준"
+                            class="sapUiTinyMarginBottom"/>
+                    </VBox>
                     <Button text="전체보기" type="Transparent" class="top5MoreBtn"
                             icon="sap-icon://feeder-arrow" iconFirst="false" press=".onTop5"/>
                 </HBox>
@@ -55,7 +59,6 @@
                         </t:Column>
                     </t:columns>
                 </t:Table>
-            </Panel>
-        </l:Grid>
+           
     </Panel>
 </mvc:View>

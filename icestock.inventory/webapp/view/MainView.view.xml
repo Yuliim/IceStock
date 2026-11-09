@@ -1,29 +1,55 @@
 <mvc:View controllerName="icestock.inventory.icestock.inventory.controller.MainView"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns:l="sap.ui.layout"
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}" showHeader="false">
         <content>
-            <l:Grid
-                containerQuery="true"
-                defaultSpan="XL6 L6 M12 S12"
-                class="sapUiSmallMargin">
-                <Panel width="100%">
-                    <layoutData>
-                        <l:GridData span="XL12 L12 M12 S12"/>
-                    </layoutData>
+            <VBox width="100%" class="sapUiSmallMargin">
+                <HBox width="100%" class="sapUiSmallMarginBottom">
                     <mvc:XMLView
+                        width="100%"
                         viewName="icestock.inventory.icestock.inventory.view.dashboard.Kpi"/>
-                </Panel>
-                <mvc:XMLView
-                    viewName="icestock.inventory.icestock.inventory.view.dashboard.MonthlyChart"/>
-                <mvc:XMLView
-                    viewName="icestock.inventory.icestock.inventory.view.dashboard.CategoryChart"/>
-                <mvc:XMLView
-                    viewName="icestock.inventory.icestock.inventory.view.dashboard.LowStockTable"/>
-                <mvc:XMLView
-                    viewName="icestock.inventory.icestock.inventory.view.dashboard.Top5Table"/>
-            </l:Grid>
+                </HBox>
+                <HBox width="100%" alignItems="Stretch" class="sapUiSmallMarginBottom">
+                    <Panel width="auto" height="100%" class="sapUiSmallMarginBeginEnd">
+                        <layoutData>
+                            <FlexItemData growFactor="1" shrinkFactor="1" baseSize="0"/>
+                        </layoutData>
+                        <mvc:XMLView
+                            width="100%"
+                            height="100%"
+                            viewName="icestock.inventory.icestock.inventory.view.dashboard.MonthlyChart"/>
+                    </Panel>
+                    <Panel width="auto" height="100%" class="sapUiSmallMarginBeginEnd">
+                        <layoutData>
+                            <FlexItemData growFactor="1" shrinkFactor="1" baseSize="0"/>
+                        </layoutData>
+                        <mvc:XMLView
+                            width="100%"
+                            height="100%"
+                            viewName="icestock.inventory.icestock.inventory.view.dashboard.CategoryChart"/>
+                    </Panel>
+                </HBox>
+                <HBox width="100%" alignItems="Stretch">
+                    <Panel width="auto" height="100%" class="sapUiSmallMarginBeginEnd">
+                        <layoutData>
+                            <FlexItemData growFactor="1" shrinkFactor="1" baseSize="0"/>
+                        </layoutData>
+                        <mvc:XMLView
+                            width="100%"
+                            height="100%"
+                            viewName="icestock.inventory.icestock.inventory.view.dashboard.LowStockTable"/>
+                    </Panel>
+                    <Panel width="auto" height="100%" class="sapUiSmallMarginBeginEnd">
+                        <layoutData>
+                            <FlexItemData growFactor="1" shrinkFactor="1" baseSize="0"/>
+                        </layoutData>
+                        <mvc:XMLView
+                            width="100%"
+                            height="100%"
+                            viewName="icestock.inventory.icestock.inventory.view.dashboard.Top5Table"/>
+                    </Panel>
+                </HBox>
+            </VBox>
         </content>
     </Page>
 </mvc:View>

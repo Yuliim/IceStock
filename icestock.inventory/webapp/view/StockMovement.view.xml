@@ -12,14 +12,14 @@
                         <Toolbar class="stockMovementRegisterToolbar">
                             <Title text="입출고 등록" level="H2" />
                         </Toolbar>
-                        <VBox class="sapUiSmallMargin">
+                        <VBox>
                             <Text
                                 class="sapUiTinyMarginTop sapUiSmallMarginBottom"
                                 text="처리 결과는 현재 재고와 판매 데이터에 즉시 반영됩니다." />
                             <l:Grid
                                 defaultSpan="XL12 L12 M12 S12"
                                 hSpacing="1.5"
-                                vSpacing="1.5"
+                                vSpacing="1.5"  
                                 width="100%">
                                 <VBox>
                                     <layoutData>
@@ -129,9 +129,7 @@
 
                 <Panel class="sapUiSmallMarginBottom stockMovementFilterSection">
                     <content>
-                        <OverflowToolbar class="stockMovementFilterToolbar">
-                            <Title text="검색 필터" level="H3" />
-                            <ToolbarSeparator />
+                        <FlexBox class="stockMovementFilterToolbar">
                             <SearchField
                                 id="movementSearchField"
                                 width="14rem"
@@ -180,7 +178,7 @@
                                 icon="sap-icon://reset"
                                 type="Transparent"
                                 press="onResetFilters" />
-                        </OverflowToolbar>
+                        </FlexBox>
                     </content>
                 </Panel>
 
@@ -195,8 +193,7 @@
                             width="100%"
                             rows="{path: 'inventory>/movements', sorter: {path: 'date', descending: true}}"
                             selectionMode="None"
-                            enableColumnReordering="true"
-                            fixedColumnCount="2"
+                            enableColumnReordering="false"
                             alternateRowColors="true">
                     <t:columns>
                         <t:Column width="6rem">

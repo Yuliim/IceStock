@@ -10,16 +10,6 @@
         <Text text="Category Chart"></Text>
         
         <l:Grid containerQuery="true" defaultSpan="XL6 L6 M12 S12" class="sapUiSmallMargin">
-
-            <!--  (D 월별 입출고 자리) -->
-            <Panel headerText="월별 입출고 현황">
-                <layoutData>
-                    <l:GridData span="XL8 L8 M12 S12"/>
-                </layoutData>
-                <Text text="차트 D 자리"/>
-            </Panel>
-
-            <!-- 오른쪽: 카테고리별 재고 -->
             <Panel>
                 <layoutData>
                     <l:GridData span="XL4 L4 M12 S12"/>

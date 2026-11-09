@@ -47,8 +47,11 @@ sap.ui.define([
             let aTop5 = aResult.slice(0, 5).map((o, i) => ({ ...o, rank: i + 1 }));
             this.getView().getModel("top5").setProperty("/top5Stock", aTop5);
             
-            
-            
+      },
+      onTop5(){
+        
+            let vRoute = this.getOwnerComponent().getRouter();
+            vRoute.navTo("product");
       }
   });
 });

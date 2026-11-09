@@ -46,7 +46,7 @@ sap.ui.define([
               }
 
               // 결과 배열에 { 카테고리이름, 재고합계 } 추가
-              aResult.push({ categoryName: oCategory.categoryName, stock: vSum });
+              aResult.push({ categoryName: oCategory.categoryName.replace("아이스크림", ""), stock: vSum });
           }
 
           // 차트 모델에 결과 넣기 → 차트가 자동으로 바뀜

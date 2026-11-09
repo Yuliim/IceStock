@@ -14,11 +14,11 @@
                 <tnt:NavigationList >
                     <!-- key값을 manifest.json의 route name과 동일하게 맞춰 라우팅 관리 -->
                     <tnt:NavigationListItem text="Dashboard" key="dashboard"/>
-                    <tnt:NavigationListItem text="Kpi" key="kpi"/>
-                    <tnt:NavigationListItem text="Monthly Chart" key="monthlyChart"/>
-                    <tnt:NavigationListItem text="Category Chart" key="categoryChart"/>
-                    <tnt:NavigationListItem text="Low Stock Table" key="lowStockTable"/>
-                    <tnt:NavigationListItem text="Top 5 Table" key="top5Table"/>
+                    <tnt:NavigationListItem text="Kpi" key="kpi" visible="false"/>
+                    <tnt:NavigationListItem text="Monthly Chart" key="monthlyChart" visible="false"/>
+                    <tnt:NavigationListItem text="Category Chart" key="categoryChart" visible="false"/>
+                    <tnt:NavigationListItem text="Low Stock Table" key="lowStockTable" visible="false"/>
+                    <tnt:NavigationListItem text="Top 5 Table" key="top5Table" visible="false"/>
 
                     <tnt:NavigationListItem text="Product" key="product"/>
                     <tnt:NavigationListItem text="Stock Movement" key="stockMovement"/>

@@ -13,7 +13,7 @@
             
             <HBox width="100%">
             <!--전체 상품 수-->
-            <Panel class="sapUiSmallMargin" width="auto">
+            <Panel>
                 <layoutData>
                     <FlexItemData growFactor="1" shrinkFactor="1" baseSize="0"/>
                 </layoutData>
@@ -24,12 +24,11 @@
                     </HBox>
                     <Label text="활성화된 상품 기준"/>  
                     <ObjectNumber number="{kpi>/productCount}" unit="개" class="sapUiSmallMarginTopBottom"/>
-                    
                 </VBox>
             </Panel>
 
             <!-- 총 재고 수량-->
-            <Panel class="sapUiSmallMargin" width="auto">
+            <Panel>
                 <layoutData>
                     <FlexItemData growFactor="1" shrinkFactor="1" baseSize="0"/>
                 </layoutData>
@@ -44,7 +43,7 @@
             </Panel>
 
             <!-- 재고 부족 상품-->
-            <Panel class="sapUiSmallMargin" width="auto">
+            <Panel>
                 <layoutData>
                     <FlexItemData growFactor="1" shrinkFactor="1" baseSize="0"/>
                 </layoutData>
@@ -60,7 +59,7 @@
             </Panel>
 
             <!-- 이번 달 입출고 -->
-            <Panel class="sapUiSmallMargin" width="auto">
+            <Panel>
                 <layoutData>
                     <FlexItemData growFactor="1" shrinkFactor="1" baseSize="0"/>
                 </layoutData>
@@ -69,8 +68,13 @@
                         <Text text="이번 달 입출고"/>
                         <core:Icon src="sap-icon://synchronize" size="1.5rem" color="#6a1b9a"/>
                     </HBox>
-                    <Label text="당월 입고·출고 수량 합계"/>
-                    <ObjectNumber number="{kpi>/monthlyTotal}" unit="개" class="sapUiSmallMarginTopBottom"/>
+                    <Label text="입출고 건수 및 당월 입고·출고 수량"/>
+                    <ObjectNumber
+                        number="{kpi>/monthlyTotal}"
+                        unit="건"
+                        class="sapUiSmallMarginTopBottom"/>
+                    <Text
+                        text="{= '입고 ' + ${kpi>/monthlyIn} + '개 · 출고 ' + ${kpi>/monthlyOut} + '개' }"/>
                 </VBox>
             </Panel>
             </HBox>

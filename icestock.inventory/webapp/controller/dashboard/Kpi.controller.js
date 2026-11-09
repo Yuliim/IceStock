@@ -51,24 +51,26 @@ sap.ui.define([
 
       // YYYY-MM을 만들어 올해 이번 달만 고른다. 예: 2026-11
       const month = today.getFullYear() + "-" + String(today.getMonth() + 1).padStart(2, "0");
+      let monthlyTotal = 0;
       let monthlyIn = 0;
       let monthlyOut = 0;
       movements.forEach((movement) => {
         if (typeof movement.date !== "string" || !movement.date.startsWith(month + "-")) {
           return;
         }
-        // 처리 내역의 개수가 아니라 quantity의 합계다. 출고도 양수로 더한다.
         // 과거 이력은 현재 상품의 활성 여부와 관계없이 포함한다.
         if (movement.type === "IN") {
+          monthlyTotal += 1;
           monthlyIn += movement.quantity;
         } else if (movement.type === "OUT") {
+          monthlyTotal += 1;
           monthlyOut += movement.quantity;
         }
       });
       return {
         productCount: activeProducts.length,
         totalStock, lowStockCount,
-        monthlyTotal: monthlyIn + monthlyOut,
+        monthlyTotal,
         monthlyIn, monthlyOut
       };
     },

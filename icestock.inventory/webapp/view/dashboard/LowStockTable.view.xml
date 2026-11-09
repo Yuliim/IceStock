@@ -9,52 +9,66 @@
         <Text text="LowStockTable"></Text>
             <Panel width="37rem">
                 <VBox>
-                    <layout:Grid defaultSpan="L6 M12 S12" class="sapUiContentPadding">
-                        <layout:content>
-                            <!-- 컨트롤러가 계산한 부족 상품 목록을 행으로 반복 표시한다. -->
-                            <t:Table rows="{lowStock>/products}"
-                                    selectionMode="None"
-                                     paste="onPaste"
-                                     ariaLabelledBy="Title2"
-                                     visibleRowCount="8"
-                                     rowHeight="48"
-                                     class="custom-table-header lowStockTable">
-                            <t:layoutData>
-                    <layout:GridData span="L12 M12 S12" />
-                            </t:layoutData>
-                                <t:extension >
-                                    <OverflowToolbar style="Clear">
-                                        <Title id="Title2" text="재고 부족 상품" titleStyle="H3" class="lowStockTitle" />
-                                            <ToolbarSpacer/>
-                                                <Button text="전체 보기" press=".onShowAllProducts" type="Transparent" iconFirst="false" icon="sap-icon://arrow-right" class="custom-gray-btn"/>
-                                                    </OverflowToolbar>
-                                                    <Label text="안전재고 미만의 상품입니다" class="lowStockSubtitle"/>
-                                                </t:extension>
-                                                <t:columns>
-                                <!-- 각 셀은 현재 행의 lowStock 모델 필드를 표시한다. -->
-                                <t:Column width="7rem" hAlign="Begin">
-                                    <Label text="상품코드" class="lowStockHeaderLabel"/>
+                    <Title id="Title2" text="재고 부족 상품" titleStyle="H3" class="lowStockTitle"/>
+                    <Label
+                        text="안전재고 미만의 상품입니다"
+                        class="sapUiTinyMarginBottom"/>
+                </VBox>
+                <Button
+                    text="전체 보기"
+                    press=".onShowAllProducts"
+                    type="Transparent"
+                    iconFirst="false"
+                    icon="sap-icon://arrow-right"
+                    class="custom-gray-btn"/>
+             <VBox>
+                <layout:Grid defaultSpan="L6 M12 S12" class="sapUiContentPadding">
+                    <layout:content>
+                        <!-- 컨트롤러가 계산한 부족 상품 목록을 행으로 반복 표시한다. -->
+                        <t:Table rows="{lowStock>/products}"
+                                selectionMode="None"
+                                    paste="onPaste"
+                                    ariaLabelledBy="Title2"
+                                    visibleRowCount="8"
+                                    rowHeight="36"
+                                    class="custom-table-header lowStockTable">
+                        <t:layoutData>
+                <layout:GridData span="L12 M12 S12" />
+                        </t:layoutData>
+                                            <t:columns>
+                            <!-- 각 셀은 현재 행의 lowStock 모델 필드를 표시한다. -->
+                            <t:Column width="7rem" hAlign="Begin">
+                                <Label text="상품코드" class="lowStockHeaderLabel"/>
+                                <t:template>
+                                    <Text text="{lowStock>productId}" class="lowStockCode"/>
+                                </t:template>
+                            </t:Column>
+                            <t:Column width="7rem" hAlign="Begin">
+                                <Label text="상품명" class="lowStockHeaderLabel"/>
+                                <t:template>
+                                    <Text text="{lowStock>productName}" class="lowStockName"/>
+                                </t:template>
+                            </t:Column>
+                            <t:Column width="6rem" hAlign="Begin">
+                                <Label text="현재 재고" class="lowStockHeaderLabel"/>
+                                <t:template>
+                                    <Text text="{lowStock>stock}개" class="lowStockQuantity"/>
+                                </t:template>
+                            </t:Column>
+                            <t:Column width="6rem" hAlign="Begin">
+                                <Label text="안전재고" class="lowStockHeaderLabel"/>
                                     <t:template>
-                                        <Text text="{lowStock>productId}" class="lowStockCode" />
+                                        <Text text="{lowStock>safetyStock}개" class="lowStockSafety"/>
                                     </t:template>
-                                </t:Column>
-                                <t:Column width="7rem" hAlign="Begin">
-                                    <Label text="상품명" class="lowStockHeaderLabel" />
-                                    <t:template>
-                                        <Text text="{lowStock>productName}" class="lowStockName"/>
-                                    </t:template>
-                                </t:Column>
-                                <t:Column width="6rem" hAlign="Begin">
-                                    <Label text="현재 재고" class="lowStockHeaderLabel"/>
-                                    <t:template>
-                                        <Text text="{lowStock>stock}개" class="lowStockQuantity"/>
-                                    </t:template>
-                                </t:Column>
-                                <t:Column width="6rem" hAlign="Begin">
-                                    <Label text="안전재고" class="lowStockHeaderLabel"/>
-                                        <t:template>
-                                            <Text text="{lowStock>safetyStock}개" class="lowStockSafety"/>
-                                        </t:template>
+                        </t:Column>
+                            <t:Column width="5.5rem" hAlign="Center">
+                                <Label text="상태" class="lowStockHeaderLabel"/>
+                                <t:template>
+                                    <ObjectStatus
+                                        text="{lowStock>status}"
+                                        state="Error"
+                                        class="lowStockStatus"/>
+                                </t:template>
                             </t:Column>
                                 <t:Column width="5.5rem" hAlign="Center">
                                     <Label text="상태" class="lowStockHeaderLabel"/>

@@ -57,9 +57,12 @@ sap.ui.define([
             
       },
       onTop5(){
-        
-            let vRoute = this.getOwnerComponent().getRouter();
-            vRoute.navTo("product");
+            const vRoute = this.getOwnerComponent().getRouter();
+            vRoute.navTo("product", {
+              "?query": {
+                sort: "sales"
+              }
+            });
       }
   });
 });

@@ -28,8 +28,24 @@ sap.ui.define([
       this._inventory.attachRequestCompleted(this._refreshProducts, this);
       this._route = this.getOwnerComponent().getRouter().getRoute("product");
       // 상세에서 돌아올 때 원본을 다시 읽되 검색 조건은 유지한다.
-      this._route.attachPatternMatched(this._refreshProducts, this);
+      this._route.attachPatternMatched(this._onProductRouteMatched, this);
       // 이미 로딩된 데이터가 있다면 바로 표시한다.
+      this._refreshProducts();
+    },
+
+    _onProductRouteMatched(event) {
+      const argumentsObject = event.getParameter("arguments") || {};
+      const query = argumentsObject["?query"] || {};
+      const model = this.getView().getModel("product");
+
+      if (query.status === "low") {
+        model.setProperty("/status", "부족");
+        model.setProperty("/sort", "LOW");
+      } else {
+        model.setProperty("/status", "ALL");
+        model.setProperty("/sort", "DEFAULT");
+      }
+
       this._refreshProducts();
     },
 
@@ -261,7 +277,7 @@ sap.ui.define([
     // View가 파괴될 때 이벤트를 해제해 중복 실행과 불필요한 참조를 막는다.
     onExit() {
       this._inventory.detachRequestCompleted(this._refreshProducts, this);
-      this._route.detachPatternMatched(this._refreshProducts, this);
+      this._route.detachPatternMatched(this._onProductRouteMatched, this);
     }
   });
 });

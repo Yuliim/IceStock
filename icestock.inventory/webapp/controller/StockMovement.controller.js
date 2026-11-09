@@ -89,7 +89,7 @@ sap.ui.define([
         );
       },
 
-      // 상품 재고와 입출고 이력을 함께 갱신하여 한 번의 처리를 완료한다.
+      // 재고·입출고 이력을 저장하고, 판매 출고라면 판매 내역까지 함께 기록한다.
       _saveMovement(oFormData) {
         const oModel = this.getOwnerComponent().getModel("inventory");
         const oQuantityInput = this.byId("movementRegisterQuantity");
@@ -120,7 +120,32 @@ sap.ui.define([
           note: oNoteInput.getValue().trim()
         });
         oModel.setProperty("/movements", aMovements);
+
+        // TOP 5와 상품 상세는 /sales를 기준으로 판매수량·매출을 계산한다.
+        // 재고만 줄이면 판매량은 늘지 않으므로 OUT + SALE일 때 판매 내역도 추가한다.
+        // 매입 입고나 폐기 출고는 판매가 아니므로 이 배열에 추가하지 않는다.
+        if (sType === "OUT" && sReason === "SALE") {
+          const aSales = oModel.getProperty("/sales") || [];
+          const iNextSalesNumber = aSales.reduce((iMax, oSale) => {
+            const aMatch = /^S(\d+)$/.exec(oSale.salesId || "");
+            return aMatch ? Math.max(iMax, Number(aMatch[1])) : iMax;
+          }, 0) + 1;
+          const iTotalAmount = iQuantity * oProduct.sellingPrice;
+          const iTotalCost = iQuantity * oProduct.purchasePrice;
+
+          oModel.setProperty("/sales", [...aSales, {
+            salesId: `S${String(iNextSalesNumber).padStart(3, "0")}`,
+            productId: oProduct.productId,
+            date: this._formatFilterDate(oDate),
+            quantity: iQuantity,
+            totalAmount: iTotalAmount,
+            totalCost: iTotalCost,
+            profit: iTotalAmount - iTotalCost
+          }]);
+        }
+
         this._sortMovements();
+        // 판매 내역까지 저장한 뒤 알림을 보내야 TOP 5가 최신 판매량을 집계한다.
         this.getOwnerComponent().getEventBus().publish("inventory", "changed");
         this._updateRegisterStock();
         oQuantityInput.setValue("");

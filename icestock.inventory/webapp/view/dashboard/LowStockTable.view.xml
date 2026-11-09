@@ -26,7 +26,7 @@
                                     <OverflowToolbar style="Clear">
                                         <Title id="Title2" text="재고 부족 상품" titleStyle="H3"  />
                                             <ToolbarSpacer/>
-                                                <Button text="전체 보기" press="onpress" type="Transparent" iconFirst="false" icon="sap-icon://arrow-right" class="custom-gray-btn"/>
+                                                <Button text="전체 보기" press=".onShowAllProducts" type="Transparent" iconFirst="false" icon="sap-icon://arrow-right" class="custom-gray-btn"/>
                                                     </OverflowToolbar>
                                                     <Label text="안전재고 미만의 상품입니다"/>
                                                 </t:extension>

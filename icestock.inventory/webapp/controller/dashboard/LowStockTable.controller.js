@@ -28,6 +28,10 @@ sap.ui.define([
         }
       },
 
+      onShowAllProducts() {
+        this.getOwnerComponent().getRouter().navTo("product");
+      },
+
       _refreshLowStockProducts() {
         // 원본 상품과 입출고 이력을 읽어 상품별 최신 재고를 계산한다.
         const aProducts = this._oInventoryModel.getProperty("/products") || [];

@@ -101,6 +101,12 @@ test("재고 부족 테이블은 안전재고 미만 상품만 부족 상태로 
   assert.equal(movementUpdatedRows[2].stock, 4);
 });
 
+test("재고 부족 테이블 전체 보기는 상품 관리 화면으로 이동", () => {
+  const { controller, routes } = setup("dashboard/LowStockTable");
+  controller.onShowAllProducts();
+  assert.deepEqual(routes, [["product"]]);
+});
+
 // 각 test는 setup으로 독립 데이터를 만들고 assert로 기대 결과를 확인한다.
 // 실행: 앱 루트에서 node --test test/product-controllers.test.cjs
 test("판매량·부족 경계·필요수량 가공 및 필터 조합", () => {

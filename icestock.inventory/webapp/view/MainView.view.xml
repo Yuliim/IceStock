@@ -5,9 +5,13 @@
         <content>
             <VBox width="100%" class="sapUiSmallMargin">
                 <HBox width="100%" class="sapUiSmallMarginBottom">
-                    <Panel width="100%">
+                        <Panel width="auto" height="100%" class="sapUiSmallMarginBeginEnd">
+                        <layoutData>
+                            <FlexItemData growFactor="1" shrinkFactor="1" baseSize="0"/>
+                        </layoutData>
                         <mvc:XMLView
                             width="100%"
+                            height="100%"
                             viewName="icestock.inventory.icestock.inventory.view.dashboard.Kpi"/>
                     </Panel>
                 </HBox>

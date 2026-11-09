@@ -11,6 +11,7 @@
                 <VBox>
                     <layout:Grid defaultSpan="L6 M12 S12" class="sapUiContentPadding">
                         <layout:content>
+                            <!-- 컨트롤러가 계산한 부족 상품 목록을 행으로 반복 표시한다. -->
                             <t:Table rows="{lowStock>/products}"
                                     selectionMode="None"
                                      paste="onPaste"
@@ -30,6 +31,7 @@
                                                     <Label text="안전재고 미만의 상품입니다"/>
                                                 </t:extension>
                                                 <t:columns>
+                                <!-- 각 셀은 현재 행의 lowStock 모델 필드를 표시한다. -->
                                 <t:Column width="7rem" hAlign="Begin">
                                     <Label text="상품코드"/>
                                     <t:template>

@@ -1,7 +1,70 @@
 <mvc:View controllerName="icestock.inventory.icestock.inventory.controller.dashboard.LowStockTable"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
+    xmlns="sap.m"
+    xmlns:t="sap.ui.table"
+    xmlns:u="sap.ui.unified"
+	xmlns:c="sap.ui.core"
+    xmlns:layout="sap.ui.layout">
     <Page title="{i18n>title}">
         <Text text="LowStockTable"></Text>
+            <Panel width="37rem">
+                <VBox>
+                    <layout:Grid defaultSpan="L6 M12 S12" class="sapUiContentPadding">
+                        <layout:content>
+                            <t:Table rows="{/movements}"
+                                    selectionMode="None"
+                                     paste="onPaste"
+                                     ariaLabelledBy="Title2"
+                                     visibleRowCount="8"
+                                     rowHeight="48"
+                                     class="custom-table-header">
+                            <t:layoutData>
+                    <layout:GridData span="L12 M12 S12" />
+                            </t:layoutData>
+                                <t:extension >
+                                    <OverflowToolbar style="Clear">
+                                        <Title id="Title2" text="재고 부족 상품" titleStyle="H3"  />
+                                            <ToolbarSpacer/>
+                                                <Button text="전체 보기" press="onpress" type="Transparent" iconFirst="false" icon="sap-icon://arrow-right" class="custom-gray-btn"/>
+                                                    </OverflowToolbar>
+                                                    <Label text="안전재고 이하의 상품입니다"/>
+                                                </t:extension>
+                                                <t:columns>
+                                <t:Column width="7rem" hAlign="Begin">
+                                    <Label text="상품코드"/>
+                                    <t:template>
+                                        <Text text="{productId}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column width="7rem" hAlign="Begin">
+                                    <Label text="상품명" />
+                                    <t:template>
+                                        <Text text="{productName}"/>
+                                    </t:template>
+                                </t:Column>
+                                <t:Column width="6rem" hAlign="Begin">
+                                    <Label text="현재 재고"/>
+                                    <t:template>
+                                        <Text text="{stock}개"/>
+                                    </t:template>
+                                </t:Column>
+                                <t:Column width="6rem" hAlign="Begin">
+                                    <Label text="안전재고"/>
+                                        <t:template>
+                                            <Text text="{safetyStock}개"/>
+                                        </t:template>
+                            </t:Column>
+                                <t:Column width="5.5rem" hAlign="Center">
+                                    <Label text="상태"/>
+                                    <t:template>
+                                        <ObjectStatus text="{status}" state="Error"/>
+                                    </t:template>
+                                </t:Column>
+                            </t:columns>
+                        </t:Table>
+                    </layout:content>
+                </layout:Grid>
+            </VBox>
+        </Panel>
     </Page>
 </mvc:View>

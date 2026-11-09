@@ -8,8 +8,7 @@
 	xmlns:c="sap.ui.core"
     xmlns:layout="sap.ui.layout">
 
-    <Page title="{i18n>title}">
-        <Panel width="60rem">
+    <Panel width="100%">
             <VBox>
                 <Title text="월별 입출고 현황" titleStyle="H3" />
                 <Label text="최근 6개월간 입고 및 출고 수량" class="sapUiSmallMarginBottom" />
@@ -47,6 +46,5 @@
                     </viz:feeds>
                 </viz:VizFrame>
             </VBox>
-        </Panel>
-    </Page>
+    </Panel>
 </mvc:View>

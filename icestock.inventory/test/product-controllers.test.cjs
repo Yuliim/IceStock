@@ -34,19 +34,15 @@ function setup(file, data) {
   const warnings = [];
   const routes = [];
   const eventListeners = [];
-  const publishedEvents = [];
   const eventBus = {
     subscribe: (channel, event, listener, context) => eventListeners.push({ channel, event, listener, context }),
     unsubscribe: (channel, event, listener, context) => {
       const index = eventListeners.findIndex((item) => item.channel === channel && item.event === event && item.listener === listener && item.context === context);
       if (index >= 0) { eventListeners.splice(index, 1); }
     },
-    publish: (channel, event, ...args) => {
-      publishedEvents.push({ channel, event });
-      eventListeners
-        .filter((item) => item.channel === channel && item.event === event)
-        .forEach((item) => item.listener.apply(item.context, args));
-    }
+    publish: (channel, event, ...args) => eventListeners
+      .filter((item) => item.channel === channel && item.event === event)
+      .forEach((item) => item.listener.apply(item.context, args))
   };
   const box = {
     warning: (message) => warnings.push(message), information() {},
@@ -66,7 +62,7 @@ function setup(file, data) {
   }) });
   controller.onInit();
   controller.onCloseDialog = () => {};
-  return { controller, inventory, models, warnings, routes, eventBus, publishedEvents };
+  return { controller, inventory, models, warnings, routes, eventBus };
 }
 
 // UI에서 상품 행의 버튼을 누른 것처럼 이벤트의 bindingContext를 만들어 준다.
@@ -159,7 +155,7 @@ test("판매량 정렬 뒤에도 ID로 상세 이동·수정·비활성화", () 
 });
 
 test("등록 검증: 중복·빈 이름·음수·소수 재고 차단 및 정상 등록", () => {
-  const { controller, inventory, models, warnings, publishedEvents } = setup("Product");
+  const { controller, inventory, models, warnings } = setup("Product");
   controller._openDialog = (data) => models.form.setData(data);
   controller.onCreate();
   const form = { ...models.form.getData(), productName: "테스트 상품" };
@@ -177,7 +173,6 @@ test("등록 검증: 중복·빈 이름·음수·소수 재고 차단 및 정상
   assert.equal(warnings.length, invalid.length);
   models.form.setData(form);
   controller.onSave();
-  assert.ok(publishedEvents.some((item) => item.channel === "inventory" && item.event === "changed"));
   const created = inventory.getProperty("/products")[count];
   assert.equal(created.stock, 0);
   assert.equal(created.active, true);

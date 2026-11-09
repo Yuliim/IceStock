@@ -13,6 +13,8 @@
                 <Title text="월별 입출고 현황" titleStyle="H3" />
                 <Label text="최근 6개월간 입고 및 출고 수량" class="sapUiSmallMarginBottom" />
                 <viz:VizFrame id="idVizFrame" 
+                            width="100%"
+                            height="240px"
                             vizType="column"
                             vizProperties='{  "title": { "visible": false },
                                             "valueAxis": {

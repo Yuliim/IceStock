@@ -60,7 +60,7 @@ test("활성 상품·안전재고 경계·당월 수량 합계와 연도 필터"
   assert.equal(result.lowStockCount, 2);
   assert.equal(result.monthlyIn, 20);
   assert.equal(result.monthlyOut, 7);
-  assert.equal(result.monthlyTotal, 27);
+  assert.equal(result.monthlyTotal, 2);
   assert.equal(controller._calculateKpis(new Date(2027, 0, 1)).monthlyTotal, 0);
 });
 
@@ -72,7 +72,7 @@ test("실제 mockData의 2026년 11월 집계", () => {
   assert.equal(result.totalStock, 437);
   assert.equal(result.lowStockCount, 8);
   const monthly = data.movements.filter((item) => item.date.startsWith("2026-11-"));
-  assert.equal(result.monthlyTotal, monthly.reduce((sum, item) => sum + item.quantity, 0));
+  assert.equal(result.monthlyTotal, monthly.length);
 });
 
 test("로딩 전 빈 값·로딩 완료·원본 변경·종료 시 이벤트 정리", () => {

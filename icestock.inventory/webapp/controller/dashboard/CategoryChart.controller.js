@@ -51,10 +51,6 @@ sap.ui.define([
 
           // 차트 모델에 결과 넣기 → 차트가 자동으로 바뀜
           this.getView().getModel("chart").setProperty("/categoryStock", aResult);
-      },
-      onCategory(){
-
-        
       }
   });
 });

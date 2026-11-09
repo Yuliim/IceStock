@@ -25,10 +25,7 @@
                     <l:GridData span="XL4 L4 M12 S12"/>
                 </layoutData>
                 <VBox>
-                    <HBox justifyContent="SpaceBetween">
                     <Title text="카테고리별 재고" level="H3" />
-                    <Button text="···" type="Transparent" press=".onCategory"  />
-                    </HBox>
                     <Text text="현재 재고 수량 기준" class="sapUiTinyMarginBottom" />
                 </VBox>
                 <viz:VizFrame id="idVizFrameE1"

@@ -48,12 +48,10 @@ sap.ui.define([
             this.getView().getModel("top5").setProperty("/top5Stock", aTop5);
             
       },
-      onTop5() {
-
-
+      onTop5(){
+        
+            let vRoute = this.getOwnerComponent().getRouter();
+            vRoute.navTo("product");
       }
-         
-            
-         
   });
 });

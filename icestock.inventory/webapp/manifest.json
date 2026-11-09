@@ -94,6 +94,11 @@
           "target": "product"
         },
         {
+          "name": "productDetail",
+          "pattern": "product/{productId}",
+          "target": "productDetail"
+        },
+        {
           "name": "stockMovement",
           "pattern": "stockMovement",
           "target": "stockMovement"
@@ -132,7 +137,11 @@
         },
         "product": {
           "id": "product",
-          "name": "product"
+          "name": "Product"
+        },
+        "productDetail": {
+          "id": "productDetail",
+          "name": "ProductDetail"
         },
         "stockMovement": {
           "id": "stockMovement",

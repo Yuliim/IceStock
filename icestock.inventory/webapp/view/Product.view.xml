@@ -1,7 +1,75 @@
 <mvc:View controllerName="icestock.inventory.icestock.inventory.controller.Product"
-    xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
-    <Page  title="{i18n>title}">
-        <Text text="Product View"></Text>
+    xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:table="sap.ui.table">
+    <!--
+        화면 배치는 이 View, 계산·저장은 Product.controller.js가 담당한다.
+        product>/query: 모델 루트의 검색어, product>productName: 현재 상품 행의 이름.
+        press=".onCreate"의 점(.)은 이 View의 Controller 함수를 호출한다는 뜻이다.
+        sapUiSmallMargin 등의 클래스는 UI5가 제공하는 기본 여백이다.
+    -->
+    <Page title="상품 관리">
+        <content>
+            <VBox class="sapUiSmallMargin">
+                <!-- 1. 안내와 등록 버튼. ToolbarSpacer는 버튼을 오른쪽으로 밀어 준다. -->
+                <OverflowToolbar>
+                    <Text text="매장에서 판매하는 아이스크림 상품을 관리하세요." />
+                    <ToolbarSpacer />
+                    <Button text="새 상품 등록" icon="sap-icon://add" type="Emphasized" press=".onCreate" />
+                </OverflowToolbar>
+                <!-- 2. 조건은 product 모델에 보관한다. 좁은 화면에서는 다음 줄로 배치한다. -->
+                <FlexBox wrap="Wrap" alignItems="Center" class="sapUiSmallMarginTop sapUiSmallMarginBottom">
+                    <SearchField width="18rem" placeholder="상품코드 또는 상품명 검색" value="{product>/query}"
+                        liveChange=".onSearch" search=".onSearch" class="sapUiTinyMarginEnd" />
+                    <!-- categories 배열로 선택지를 만든다. key는 코드, text는 표시 이름이다. -->
+                    <Select width="11rem" selectedKey="{product>/category}" change=".onFilterChange"
+                        items="{product>/categories}" tooltip="카테고리 필터" class="sapUiTinyMarginEnd">
+                        <core:Item key="{product>categoryId}" text="{product>categoryName}" />
+                    </Select>
+                    <Select width="9rem" selectedKey="{product>/status}" change=".onFilterChange" tooltip="재고 상태 필터" class="sapUiTinyMarginEnd">
+                        <core:Item key="ALL" text="전체 재고 상태" />
+                        <core:Item key="부족" text="부족" /><core:Item key="정상" text="정상" />
+                    </Select>
+                    <Select width="10rem" selectedKey="{product>/sort}" change=".onFilterChange" tooltip="상품 정렬" class="sapUiTinyMarginEnd">
+                        <core:Item key="DEFAULT" text="기본순" /><core:Item key="LOW" text="재고 부족순" />
+                        <core:Item key="SALES" text="판매량 높은순" /><core:Item key="STOCK" text="재고 많은순" />
+                        <core:Item key="NAME" text="상품명순" />
+                    </Select>
+                    <Button text="초기화" icon="sap-icon://reset" press=".onResetFilters" />
+                </FlexBox>
+                <!--
+                    3. Controller에서 필터·정렬한 rows 배열을 테이블에 연결한다.
+                    12행을 표시하며 추가 행은 스크롤로 본다. 넓은 열은 가로 스크롤로 확인한다.
+                    Column의 Label은 제목, template는 각 행에서 반복할 컨트롤이다.
+                    Float 타입 바인딩은 단가를 숫자로 표시한다. state는 상태 색상을 지정한다.
+                -->
+                <table:Table id="productTable" rows="{product>/rows}" selectionMode="None" visibleRowCount="12"
+                    enableColumnReordering="false" noData="표시할 상품이 없습니다." width="100%">
+                    <!-- count는 현재 검색 결과, total은 필터 전 전체 활성 상품 수다. -->
+                    <table:extension>
+                        <OverflowToolbar>
+                            <Title text="검색 결과 {product>/count}개" level="H2" />
+                            <ToolbarSpacer /><Text text="전체 활성 상품 {product>/total}개" />
+                        </OverflowToolbar>
+                    </table:extension>
+                    <!-- 관리 버튼은 속한 행의 bindingContext로 상품을 식별한다. -->
+                    <table:columns>
+                        <table:Column width="6rem"><Label text="상품코드" /><table:template><Text text="{product>productId}" /></table:template></table:Column>
+                        <table:Column width="10rem"><Label text="상품명" /><table:template><Link text="{product>productName}" press=".onDetail" /></table:template></table:Column>
+                        <table:Column width="8rem"><Label text="카테고리" /><table:template><Text text="{product>categoryName}" /></table:template></table:Column>
+                        <table:Column width="7rem" hAlign="End"><Label text="매입단가" /><table:template><ObjectNumber number="{path:'product>purchasePrice', type:'sap.ui.model.type.Float', formatOptions:{maxFractionDigits:2}}" unit="원" emphasized="false" /></table:template></table:Column>
+                        <table:Column width="7rem" hAlign="End"><Label text="매출단가" /><table:template><ObjectNumber number="{path:'product>sellingPrice', type:'sap.ui.model.type.Float', formatOptions:{maxFractionDigits:2}}" unit="원" emphasized="false" /></table:template></table:Column>
+                        <table:Column width="6rem" hAlign="End"><Label text="현재 재고" /><table:template><ObjectNumber number="{product>stock}" unit="개" state="{product>stockState}" /></table:template></table:Column>
+                        <table:Column width="6rem" hAlign="End"><Label text="안전재고" /><table:template><Text text="{product>safetyStock}개" /></table:template></table:Column>
+                        <table:Column width="6rem" hAlign="End"><Label text="판매수량" /><table:template><Text text="{product>soldQuantity}개" /></table:template></table:Column>
+                        <table:Column width="6rem"><Label text="재고 상태" /><table:template><ObjectStatus text="{product>stockStatus}" state="{product>stockState}" /></table:template></table:Column>
+                        <table:Column width="6rem" hAlign="End"><Label text="필요수량" /><table:template><Text text="{product>requiredQuantity}개" /></table:template></table:Column>
+                        <table:Column width="9rem"><Label text="관리" /><table:template>
+                            <HBox><Button icon="sap-icon://display" tooltip="상세보기" type="Transparent" press=".onDetail" />
+                                <Button icon="sap-icon://edit" tooltip="상품 수정" type="Transparent" press=".onEdit" />
+                                <Button icon="sap-icon://delete" tooltip="상품 비활성화" type="Transparent" press=".onDeactivate" /></HBox>
+                        </table:template></table:Column>
+                    </table:columns>
+                </table:Table>
+            </VBox>
+        </content>
     </Page>
 </mvc:View>

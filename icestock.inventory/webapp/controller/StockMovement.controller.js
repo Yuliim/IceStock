@@ -1,3 +1,12 @@
+/*
+ * 읽는 순서: onInit → _sortMovements → _applyFilters
+ * 등록 흐름: onRegisterMovement → _getRegisterFormData → _saveMovement
+ *
+ * inventory 모델: Component에서 제공하는 공통 상품·입출고 원본 데이터
+ * 화면의 입력 컨트롤: 등록 폼과 검색 조건을 직접 관리한다.
+ * rows 바인딩: inventory>/movements를 필터·정렬하여 이력 테이블에 표시한다.
+ * 이름 앞의 _는 이 Controller 내부에서 사용하는 함수·변수라는 표시다.
+ */
 sap.ui.define([
   "sap/ui/core/mvc/Controller",
   "sap/ui/model/Filter",
@@ -10,8 +19,10 @@ sap.ui.define([
   "use strict";
 
   return BaseController.extend("icestock.inventory.icestock.inventory.controller.StockMovement", {
+      // 화면 초기화 시 데이터 정렬, 기본 처리일자, 등록 버튼 상태를 준비한다.
       onInit() {
         const oInventoryModel = this.getOwnerComponent().getModel("inventory");
+        // 비동기 JSON 로딩이 끝난 뒤에도 최신 입출고 순서를 다시 적용한다.
         oInventoryModel.attachRequestCompleted(() => {
           this._sortMovements();
         });
@@ -20,10 +31,12 @@ sap.ui.define([
         this._updateRegisterButton();
       },
 
+      // 검색 필터나 정렬 조건이 바뀌면 테이블 바인딩에 다시 적용한다.
       onFilterChange() {
         this._applyFilters();
       },
 
+      // 검색 화면의 입력값을 초기 상태로 되돌린 뒤 필터를 다시 적용한다.
       onResetFilters() {
         this.byId("movementSearchField").setValue("");
         this.byId("movementStartDate").setDateValue(null);
@@ -34,11 +47,13 @@ sap.ui.define([
         this._applyFilters();
       },
 
+      // 입고·출고 유형에 따라 등록 버튼 문구와 현재 재고 표시를 갱신한다.
       onRegisterTypeChange() {
         this._updateRegisterButton();
         this._updateRegisterStock();
       },
 
+      // 상품 선택 변경 시 선택 상태를 확인하고 현재 재고를 표시한다.
       onRegisterProductChange() {
         const oProductInput = this.byId("movementRegisterProduct");
         const oSelectedItem = oProductInput.getSelectedItem();
@@ -50,6 +65,7 @@ sap.ui.define([
         this._updateRegisterStock();
       },
 
+      // 입력값을 검증한 뒤 사용자 확인을 거쳐 입출고를 저장한다.
       onRegisterMovement() {
         const oFormData = this._getRegisterFormData();
         if (!oFormData) {
@@ -73,16 +89,19 @@ sap.ui.define([
         );
       },
 
+      // 상품 재고와 입출고 이력을 함께 갱신하여 한 번의 처리를 완료한다.
       _saveMovement(oFormData) {
         const oModel = this.getOwnerComponent().getModel("inventory");
         const oQuantityInput = this.byId("movementRegisterQuantity");
         const oNoteInput = this.byId("movementRegisterNote");
         const { oProductContext, oProduct, iQuantity, oDate, sType, sReason } = oFormData;
+        // 처리 전 재고에서 입고는 더하고 출고는 빼서 처리 후 재고를 계산한다.
         const iBeforeStock = oProduct.stock;
         const iAfterStock = sType === "IN"
           ? iBeforeStock + iQuantity
           : iBeforeStock - iQuantity;
         const aMovements = oModel.getProperty("/movements") || [];
+        // 기존 처리번호 중 가장 큰 숫자를 찾아 다음 번호를 만든다.
         const iNextMovementNumber = aMovements.reduce((iMax, oMovement) => {
           const iMovementNumber = Number(String(oMovement.movementId).replace("M", ""));
           return Number.isNaN(iMovementNumber) ? iMax : Math.max(iMax, iMovementNumber);
@@ -108,6 +127,7 @@ sap.ui.define([
         MessageToast.show(`${sType === "IN" ? "입고" : "출고"} 등록이 완료되었습니다.`);
       },
 
+      // 입고·출고 유형에 맞는 등록 버튼 문구를 설정한다.
       _updateRegisterButton() {
         const oButton = this.byId("movementRegisterButton");
         const sType = this.byId("movementRegisterType").getSelectedKey();
@@ -116,6 +136,7 @@ sap.ui.define([
         }
       },
 
+      // 등록 폼의 값을 읽고 필수값, 수량, 출고 가능 재고를 검증한다.
       _getRegisterFormData() {
         const oDateInput = this.byId("movementRegisterDate");
         const oProductInput = this.byId("movementRegisterProduct");
@@ -156,6 +177,7 @@ sap.ui.define([
         return { oProductContext, oProduct, iQuantity, oDate, sType, sReason };
       },
 
+      // 선택한 상품의 현재 재고와 안전 재고를 상태 색상과 함께 표시한다.
       _updateRegisterStock() {
         const oProductInput = this.byId("movementRegisterProduct");
         const oStatus = this.byId("movementRegisterCurrentStock");
@@ -179,6 +201,7 @@ sap.ui.define([
         oStatus.setState(oProduct.stock <= oProduct.safetyStock ? "Warning" : "Success");
       },
 
+      // 검색어·기간·유형·사유를 조합해 이력 테이블의 애플리케이션 필터를 구성한다.
       _applyFilters() {
         const oBinding = this.byId("stockMovementTable").getBinding("rows");
         if (!oBinding) {
@@ -192,6 +215,7 @@ sap.ui.define([
         const oEndDate = this.byId("movementEndDate").getDateValue();
         const aFilters = [];
 
+        // 상품코드 또는 상품명에 검색어가 포함된 이력만 남긴다.
         if (sSearchValue) {
           aFilters.push(new Filter({
             path: "productId",
@@ -203,6 +227,7 @@ sap.ui.define([
           }));
         }
 
+        // 날짜는 YYYY-MM-DD 문자열로 비교하므로 시작일과 종료일을 포함한다.
         if (oStartDate || oEndDate) {
           const sStartDate = oStartDate ? this._formatFilterDate(oStartDate) : "0000-01-01";
           const sEndDate = oEndDate ? this._formatFilterDate(oEndDate) : "9999-12-31";
@@ -212,6 +237,7 @@ sap.ui.define([
           }));
         }
 
+        // 전체 유형·사유가 아니면 선택한 값과 같은 데이터만 필터링한다.
         const sType = this.byId("movementTypeSelect").getSelectedKey();
         if (sType !== "ALL") {
           aFilters.push(new Filter("type", FilterOperator.EQ, sType));
@@ -222,11 +248,13 @@ sap.ui.define([
           aFilters.push(new Filter("reason", FilterOperator.EQ, sReason));
         }
 
+        // 여러 필터는 AND 조건으로 적용하고, 선택한 정렬과 결과 건수도 갱신한다.
         oBinding.filter(aFilters, FilterType.Application);
         this._applySort(oBinding);
         this.byId("movementCount").setText(`(${oBinding.getLength()}건)`);
       },
 
+      // 선택한 정렬 기준을 테이블 바인딩에 적용한다.
       _applySort(oBinding) {
         const sSortKey = this.byId("movementSortSelect").getSelectedKey();
         if (sSortKey === "OLDEST") {
@@ -253,12 +281,14 @@ sap.ui.define([
         oBinding.sort(new Sorter("date", true));
       },
 
+      // DatePicker 값을 필터와 저장에 사용하는 YYYY-MM-DD 형식으로 변환한다.
       _formatFilterDate(oDate) {
         const iMonth = String(oDate.getMonth() + 1).padStart(2, "0");
         const iDay = String(oDate.getDate()).padStart(2, "0");
         return `${oDate.getFullYear()}-${iMonth}-${iDay}`;
       },
 
+      // 모델의 입출고 원본 배열을 최신 처리일자와 처리번호 순으로 정렬한다.
       _sortMovements() {
         const oModel = this.getOwnerComponent().getModel("inventory");
         const aMovements = oModel.getProperty("/movements");
@@ -280,19 +310,23 @@ sap.ui.define([
       //   return sDate ? sDate.replace(/-/g, ".") : "";
       // },
 
+      // 상품코드를 상품명과 함께 표시할 문자열로 변환한다.
       formatProductLabel(sProductId, aProducts) {
         const oProduct = (aProducts || []).find((oItem) => oItem.productId === sProductId);
         return `${oProduct ? oProduct.productName : sProductId}(${sProductId})`;
       },
 
+      // 입출고 코드와 화면 표시용 한글 문구를 변환한다.
       formatType(sType) {
         return sType === "IN" ? "입고" : "출고";
       },
 
+      // 입고는 성공, 출고는 오류 색상으로 표시한다.
       formatTypeState(sType) {
         return sType === "IN" ? "Success" : "Error";
       },
 
+      // 처리 사유 코드를 화면 표시용 한글 문구로 변환한다.
       formatReason(sReason) {
         const mReasonLabels = {
           PURCHASE: "매입",
@@ -302,6 +336,7 @@ sap.ui.define([
         return mReasonLabels[sReason] || sReason;
       },
 
+      // 입고는 양수, 출고는 음수로 표시해 재고 변동 방향을 구분한다.
       formatQuantity(sType, iQuantity) {
         if (iQuantity === undefined || iQuantity === null) {
           return "";

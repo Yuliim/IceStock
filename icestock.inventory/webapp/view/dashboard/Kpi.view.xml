@@ -1,7 +1,58 @@
 <mvc:View controllerName="icestock.inventory.icestock.inventory.controller.dashboard.Kpi"
     xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
     xmlns="sap.m">
     <Page title="{i18n>title}">
-        <Text text="KPI"></Text>
+        <!-- 가로로 나란히 -->
+    <HBox class="sapUiSmallMargin">
+
+        <!--전체 상품 수-->
+        <Panel class="sapUiResponsiveMargin" width="15rem">
+            <VBox class="sapUiSmallMargin">
+                <HBox justifyContent="SpaceBetween" alignItems="Center">
+                    <Text text="전체 상품 수"/>
+                    <core:Icon src="sap-icon://product" size="1.5rem" color="#107e3e"/>
+                </HBox>
+                <ObjectNumber number="{kpi>/productCount}" unit="개" class="sapUiSmallMarginTopBottom"/>
+                <Text text="활성화된 상품 기준"/>
+            </VBox>
+        </Panel>
+
+        <!-- 총 재고 수량-->
+        <Panel class="sapUiResponsiveMargin" width="15rem">
+            <VBox class="sapUiSmallMargin">
+                <HBox justifyContent="SpaceBetween" alignItems="Center">
+                    <Text text="총 재고 수량"/>
+                    <core:Icon src="sap-icon://inventory" size="1.5rem" color="#0a6ed1"/>
+                </HBox>
+                <ObjectNumber number="{kpi>/totalStock}" unit="개" class="sapUiSmallMarginTopBottom"/>
+                <Text text="전체 상품 재고 합계"/>
+            </VBox>
+        </Panel>
+
+        <!-- 재고 부족 상품-->
+        <Panel class="sapUiResponsiveMargin" width="15rem">
+            <VBox class="sapUiSmallMargin">
+                <HBox justifyContent="SpaceBetween" alignItems="Center">
+                    <Text text="재고 부족 상품"/>
+                    <core:Icon src="sap-icon://alert" size="1.5rem" color="#b90000"/>
+                </HBox>
+                <ObjectNumber number="{kpi>/lowStockCount}" unit="개" state="Error" class="sapUiSmallMarginTopBottom"/>
+                <Text text="안전재고 이하 상품"/>
+            </VBox>
+        </Panel>
+
+        <!-- 이번 달 입출고 -->
+        <Panel class="sapUiResponsiveMargin" width="15rem">
+            <VBox class="sapUiSmallMargin">
+                <HBox justifyContent="SpaceBetween" alignItems="Center">
+                    <Text text="이번 달 입출고"/>
+                    <core:Icon src="sap-icon://synchronize" size="1.5rem" color="#6a1b9a"/>
+                </HBox>
+                <ObjectNumber number="{kpi>/monthlyTotal}" unit="개" class="sapUiSmallMarginTopBottom"/>
+                <Text text="당월 입고·출고 수량 합계"/>
+            </VBox>
+        </Panel>
+    </HBox>
     </Page>
 </mvc:View>

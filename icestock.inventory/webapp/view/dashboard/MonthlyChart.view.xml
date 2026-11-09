@@ -4,7 +4,6 @@
     xmlns:viz="sap.viz.ui5.controls"
     xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
     xmlns:viz.data="sap.viz.ui5.data"
-    xmlns:t="sap.ui.table"
     xmlns:u="sap.ui.unified"
 	xmlns:c="sap.ui.core"
     xmlns:layout="sap.ui.layout">
@@ -15,6 +14,7 @@
        <VBox class="sapUiResponsiveMargin">
         <Title text="월별 입출고 현황" titleStyle="H3" />
         <Label text="최근 6개월간 입고 및 출고 수량" class="sapUiSmallMarginBottom" />
+        <layout:Grid ></layout:Grid>
         <viz:VizFrame id="idVizFrame" 
                       vizType="column"
                       width="800px"
@@ -32,7 +32,8 @@
                                                 }
                                         },
                                      "plotArea": {
-                                 "colorPalette": ["#80d4b1", "#8b9ee2"] } }'>
+                                 "colorPalette": ["#80d4b1", "#8b9ee2"] } }'
+                                 >
             <viz:dataset>
                 <viz.data:FlattenedDataset data="{/MonthlyChart}">
                     <viz.data:dimensions>

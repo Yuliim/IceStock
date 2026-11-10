@@ -25,8 +25,10 @@ sap.ui.define([
         // 비동기 JSON 로딩이 끝난 뒤에도 최신 입출고 순서를 다시 적용한다.
         oInventoryModel.attachRequestCompleted(() => {
           this._sortMovements();
+          this._filterActiveProducts();
         });
         this._sortMovements();
+        this._filterActiveProducts();
         this.byId("movementRegisterDate").setDateValue(new Date());
         this._updateRegisterButton();
       },
@@ -95,6 +97,10 @@ sap.ui.define([
         const oQuantityInput = this.byId("movementRegisterQuantity");
         const oNoteInput = this.byId("movementRegisterNote");
         const { oProductContext, oProduct, iQuantity, oDate, sType, sReason } = oFormData;
+        if (!oProduct.active) {
+          MessageToast.show("현재 판매 중인 상품만 입출고를 등록할 수 있습니다.");
+          return;
+        }
         // 처리 전 재고에서 입고는 더하고 출고는 빼서 처리 후 재고를 계산한다.
         const iBeforeStock = oProduct.stock;
         const iAfterStock = sType === "IN"
@@ -190,6 +196,11 @@ sap.ui.define([
           MessageToast.show("상품을 선택하세요.");
           return null;
         }
+        if (!oProduct.active) {
+          oProductInput.setValueState("Error");
+          MessageToast.show("현재 판매 중인 상품만 입출고를 등록할 수 있습니다.");
+          return null;
+        }
         if (!Number.isInteger(iQuantity) || iQuantity <= 0) {
           oQuantityInput.setValueState("Error");
           MessageToast.show("처리 수량은 1 이상의 정수로 입력하세요.");
@@ -201,6 +212,17 @@ sap.ui.define([
           return null;
         }
         return { oProductContext, oProduct, iQuantity, oDate, sType, sReason };
+      },
+
+      // 등록 폼에는 현재 판매 중인 상품만 표시한다. 이력 조회 바인딩은 변경하지 않는다.
+      _filterActiveProducts() {
+        const oProductBinding = this.byId("movementRegisterProduct")?.getBinding("items");
+        if (!oProductBinding) {
+          return;
+        }
+        oProductBinding.filter([
+          new Filter("active", FilterOperator.EQ, true)
+        ], FilterType.Application);
       },
 
       // 선택한 상품의 현재 재고와 안전 재고를 상태 색상과 함께 표시한다.

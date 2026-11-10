@@ -19,7 +19,7 @@ sap.ui.define([
       // rows: 검색 결과, total: 전체 활성 상품 수, count: 검색 결과 수
       this.getView().setModel(new JSONModel({
         rows: [], categories: [], count: 0, total: 0,
-        query: "", category: "ALL", status: "ALL", sort: "DEFAULT"
+        query: "", category: "ALL", status: "ALL", activity: "ACTIVE", sort: "DEFAULT"
       }), "product");
       this.getView().setModel(new JSONModel({}), "form");
       this._inventory = this.getOwnerComponent().getModel("inventory");
@@ -37,6 +37,7 @@ sap.ui.define([
       const argumentsObject = event.getParameter("arguments") || {};
       const query = argumentsObject["?query"] || {};
       const model = this.getView().getModel("product");
+      model.setProperty("/activity", "ACTIVE");
 
       if (query.status === "low") {
         model.setProperty("/status", "부족");
@@ -63,9 +64,8 @@ sap.ui.define([
       sales.forEach((sale) => {
         sold[sale.productId] = (sold[sale.productId] || 0) + sale.quantity;
       });
-      // _rows는 검색하기 전 전체 활성 상품이다. filter로 고르고 map으로 가공한다.
+      // _rows는 검색하기 전 전체 상품이다. 활성 여부는 화면 필터에서 적용한다.
       this._rows = (this._inventory.getProperty("/products") || [])
-        .filter((product) => product.active)
         .map((product) => {
           const category = categories.find((item) => item.categoryId === product.categoryId);
           const low = product.stock <= product.safetyStock;
@@ -82,7 +82,7 @@ sap.ui.define([
         });
       // '전체'는 화면 선택창에만 추가한다. setProperty로 연결된 UI에도 변경을 알린다.
       model.setProperty("/categories", [{ categoryId: "ALL", categoryName: "전체 카테고리" }, ...categories]);
-      model.setProperty("/total", this._rows.length);
+      model.setProperty("/total", this._rows.filter((product) => product.active).length);
       this.onFilterChange();
     },
 
@@ -92,13 +92,15 @@ sap.ui.define([
       const query = model.getProperty("/query").trim().toLowerCase();
       const category = model.getProperty("/category");
       const status = model.getProperty("/status");
+      const activity = model.getProperty("/activity");
       const sort = model.getProperty("/sort");
       // 코드 또는 이름이 검색어에 맞고 카테고리·재고 조건도 만족해야 한다.
       // ALL이면 해당 조건은 제한하지 않는다.
       const rows = (this._rows || []).filter((product) => {
         return (product.productId.toLowerCase().includes(query) || product.productName.toLowerCase().includes(query)) &&
           (category === "ALL" || product.categoryId === category) &&
-          (status === "ALL" || product.stockStatus === status);
+          (status === "ALL" || product.stockStatus === status) &&
+          (activity === "ALL" || (activity === "ACTIVE" ? product.active : !product.active));
       });
       // 반환값이 음수이면 left가 먼저 온다. filter로 만든 새 배열만 정렬한다.
       rows.sort((left, right) => {
@@ -129,6 +131,7 @@ sap.ui.define([
       model.setProperty("/query", "");
       model.setProperty("/category", "ALL");
       model.setProperty("/status", "ALL");
+      model.setProperty("/activity", "ACTIVE");
       model.setProperty("/sort", "DEFAULT");
       this.onFilterChange();
     },
@@ -272,6 +275,23 @@ sap.ui.define([
             this._refreshProducts();
             this.getOwnerComponent().getEventBus().publish("inventory", "changed");
             MessageToast.show("상품이 비활성화되었습니다.");
+          }
+        }
+      });
+    },
+
+    onReactivate(event) {
+      const product = event.getSource().getBindingContext("product").getObject();
+      MessageBox.confirm(product.productName + " 상품을 다시 활성화할까요?", {
+        onClose: (action) => {
+          if (action !== MessageBox.Action.OK) { return; }
+          const products = this._inventory.getProperty("/products") || [];
+          const index = products.findIndex((item) => item.productId === product.productId);
+          if (index >= 0) {
+            this._inventory.setProperty("/products/" + index + "/active", true);
+            this._refreshProducts();
+            this.getOwnerComponent().getEventBus().publish("inventory", "changed");
+            MessageToast.show("상품이 다시 활성화되었습니다.");
           }
         }
       });

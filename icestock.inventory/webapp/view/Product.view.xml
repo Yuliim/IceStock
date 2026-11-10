@@ -28,6 +28,11 @@
                         <core:Item key="ALL" text="전체 재고 상태" />
                         <core:Item key="부족" text="부족" /><core:Item key="정상" text="정상" />
                     </Select>
+                    <Select width="9rem" selectedKey="{product>/activity}" change=".onFilterChange" tooltip="판매 상태 필터" class="sapUiTinyMarginEnd">
+                        <core:Item key="ACTIVE" text="판매 중" />
+                        <core:Item key="INACTIVE" text="판매 중지" />
+                        <core:Item key="ALL" text="전체 상품" />
+                    </Select>
                     <Select width="10rem" selectedKey="{product>/sort}" change=".onFilterChange" tooltip="상품 정렬" class="sapUiTinyMarginEnd">
                         <core:Item key="DEFAULT" text="기본순" /><core:Item key="LOW" text="재고 부족순" />
                         <core:Item key="SALES" text="판매량 높은순" /><core:Item key="STOCK" text="재고 많은순" />
@@ -65,7 +70,8 @@
                         <table:Column width="7rem"><Label text="관리" /><table:template>
                             <HBox><Button icon="sap-icon://display" tooltip="상세보기" type="Transparent" press=".onDetail" />
                                 <Button icon="sap-icon://edit" tooltip="상품 수정" type="Transparent" press=".onEdit" />
-                                <Button icon="sap-icon://delete" tooltip="상품 비활성화" type="Transparent" press=".onDeactivate" /></HBox>
+                                <Button icon="sap-icon://delete" tooltip="상품 비활성화" type="Transparent" press=".onDeactivate" visible="{product>active}" />
+                                <Button icon="sap-icon://accept" tooltip="상품 재활성화" type="Transparent" press=".onReactivate" visible="{= !${product>active} }" /></HBox>
                         </table:template></table:Column>
                     </table:columns>
                 </table:Table>

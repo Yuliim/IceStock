@@ -159,6 +159,11 @@ test("판매량 정렬 뒤에도 ID로 상세 이동·수정·비활성화", () 
   assert.equal(saved.active, false);
   assert.equal(models.product.getProperty("/rows").some((item) => item.productId === selected.productId), false);
   assert.equal(inventory.getProperty("/movements").length, historyCount);
+  models.product.setProperty("/activity", "INACTIVE");
+  controller.onFilterChange();
+  assert.equal(models.product.getProperty("/rows").some((item) => item.productId === selected.productId), true);
+  controller.onReactivate(eventFor(selected));
+  assert.equal(saved.active, true);
 });
 
 test("등록 검증: 중복·빈 이름·음수·소수 재고 차단 및 정상 등록", () => {

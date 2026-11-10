@@ -1,1 +1,124 @@
 /* Enter your custom styles here */
+/* Top5Table: 표 라인 전부 제거 */
+.noLineTable .sapUiTableCnt,
+.noLineTable .sapUiTableColHdrCnt,
+.noLineTable .sapUiTableCtrlScr,
+.noLineTable .sapUiTableCell,
+.noLineTable .sapUiTableCtrl td,
+.noLineTable .sapUiTableColHdr td {
+    border: none !important;
+}
+
+/* Top5Table: 테이블 하단 라인 제거 */
+.noLineTable .sapUiTableCCnt {
+    border-bottom: none !important;
+}
+
+/* Top5Table: 순위 뱃지 (둥근 사각형) */
+.rankBadge {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 0.375rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: #f1f3f6;
+    color: #6a7383;
+}
+.rankBadge[data-rank="1"] { background: #fff4d6; color: #c98a00; }
+.rankBadge[data-rank="2"] { background: #dceef9; color: #197fae; }
+.rankBadge[data-rank="3"] { background: #fde8dc; color: #c4622d; }
+
+/* Top5Table: 카테고리 태그 (알약 모양) */
+.catTag {
+    display: inline-block !important;
+    padding: 0.2rem 0.6rem;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+.catTag[data-cat="바"]     { background: #e3f7ee; color: #3d8f6e; }
+.catTag[data-cat="콘"]     { background: #e8edff; color: #5667b3; }
+.catTag[data-cat="샌드"]   { background: #fff1e0; color: #ac7739; }
+.catTag[data-cat="컵"]     { background: #efe8ff; color: #755aaf; }
+.catTag[data-cat="튜브형"] { background: #fff6d9; color: #917830; }
+.catTag[data-cat="기타"]   { background: #fde8ea; color: #b9464e; }
+
+/* Top5Table: 전체보기 버튼 오른쪽 끝선 맞춤 */
+.top5MoreBtn .sapMBtnInner {
+    padding-right: 0 !important;
+}
+
+/* Top5Table: 제목행(컬럼 헤더) 연회색 배경 + 회색 작은 글씨 */
+.noLineTable .sapUiTableColHdrCnt,
+.noLineTable .sapUiTableHeaderRow,
+.noLineTable .sapUiTableHeaderCell {
+    background-color: #f7f8fa !important;
+}
+.noLineTable .sapUiTableHeaderCell .sapMLabel {
+    color: #8a94a6 !important;
+    font-size: 0.8125rem !important;
+    font-weight: 500 !important;
+}
+
+/* Top5Table: 컬럼 제목과 본문 구분선 */
+.top5Table .sapUiTableHeaderCell,
+.top5Table .sapUiTableColHdr,
+.top5Table .sapUiTableColHdrCnt {
+    border-bottom: 1px solid #d9dfe8 !important;
+}
+
+.top5Table .sapUiTableCell {
+    border-right: 1px solid #edf0f4 !important;
+}
+
+.top5Table .sapUiTableCell:last-child {
+    border-right: none !important;
+}
+
+/* LowStockTable: 글씨 색상 변경&제목 글씨 줄간격 맞춤 */
+.lowStockTitle { color: #1d2b45 !important; }
+.lowStockSubtitle {
+    margin-inline-start: 1rem;
+    color: #8a9ab4 !important;
+}
+.lowStockHeaderLabel,
+.lowStockHeaderLabel .sapMLabelTextWrapper {
+    color: #8a94a6 !important;
+    font-size: 0.8125rem !important;
+}
+.lowStockCode { color: #8a9ab4 !important; }
+.lowStockName { color: #1d2b45 !important; font-weight: 600 !important; }
+.lowStockQuantity { color: #f06b68 !important; }
+.lowStockSafety { color: #536a8d !important; }
+.lowStockStatus .sapMObjStatusText {
+    color: #e76866 !important;
+    font-size: 0.75rem !important;
+}
+ /* "부족" 글씨 둥근 모양으로 변경 */
+.lowStockStatus {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-width: 2.7rem;
+    padding: 0.25rem 0.55rem;
+    border-radius: 999px;
+    background-color: #fff0ef !important;
+}
+
+/* LowStockTable: 내부 표 선 제거, 컬럼 제목 행 강조 */
+.lowStockTable .sapUiTableCell,
+.lowStockTable .sapUiTableCtrl td,
+.lowStockTable .sapUiTableHeaderCell,
+.lowStockTable .sapUiTableColHdr,
+.lowStockTable .sapUiTableRowHdr {
+    border: none !important;
+}
+.lowStockTable .sapUiTableColHdrCnt,
+.lowStockTable .sapUiTableHeaderRow,
+.lowStockTable .sapUiTableHeaderCell {
+    background-color: #f7f8fa !important;
+}

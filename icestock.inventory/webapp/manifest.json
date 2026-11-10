@@ -39,7 +39,9 @@
       "libs": {
         "sap.m": {},
         "sap.ui.core": {},
-        "sap.ui.table": {}
+        "sap.ui.table": {},
+        "sap.ui.layout": {},
+        "sap.viz": {}
       }
     },
     "contentDensities": {
@@ -88,8 +90,13 @@
         },
         {
           "name": "product",
-          "pattern": "product",
+          "pattern": "product:?query:",
           "target": "product"
+        },
+        {
+          "name": "productDetail",
+          "pattern": "product/{productId}",
+          "target": "productDetail"
         },
         {
           "name": "stockMovement",
@@ -130,7 +137,11 @@
         },
         "product": {
           "id": "product",
-          "name": "product"
+          "name": "Product"
+        },
+        "productDetail": {
+          "id": "productDetail",
+          "name": "ProductDetail"
         },
         "stockMovement": {
           "id": "stockMovement",

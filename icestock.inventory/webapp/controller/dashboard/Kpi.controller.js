@@ -16,6 +16,7 @@ sap.ui.define([
         monthlyTotal: 0, monthlyIn: 0, monthlyOut: 0
       }), "kpi");
       this._inventory = this.getOwnerComponent().getModel("inventory");
+      this._eventBus = this.getOwnerComponent().getEventBus();
 
       // 최초 JSON 로딩이 늦게 완료되어도 숫자를 다시 계산한다.
       this._inventory.attachRequestCompleted(this._refreshKpis, this);
@@ -25,6 +26,7 @@ sap.ui.define([
       this._movementBinding = this._inventory.bindList("/movements");
       this._productBinding.attachChange(this._refreshKpis, this);
       this._movementBinding.attachChange(this._refreshKpis, this);
+      this._eventBus.subscribe("inventory", "changed", this._refreshKpis, this);
       this._refreshKpis();
     },
 
@@ -80,6 +82,7 @@ sap.ui.define([
       this._inventory.detachRequestCompleted(this._refreshKpis, this);
       this._productBinding.detachChange(this._refreshKpis, this);
       this._movementBinding.detachChange(this._refreshKpis, this);
+      this._eventBus.unsubscribe("inventory", "changed", this._refreshKpis, this);
       this._productBinding.destroy();
       this._movementBinding.destroy();
     }

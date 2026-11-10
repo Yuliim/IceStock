@@ -5,7 +5,7 @@
     <Panel width="100%">
         <VBox>
             <VBox>
-                <Title text="주요 재고 지표(KPI)" titleStyle="H3"/>
+                <Title text="주요 재고 지표" titleStyle="H3"/>
                 <Label
                     text="현재 상품 및 재고 현황"
                     class="sapUiTinyMarginBottom"/>

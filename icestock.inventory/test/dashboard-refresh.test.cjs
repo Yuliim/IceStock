@@ -74,7 +74,7 @@ function environment(data = {}) {
 
 function fixture() {
   return {
-    products: [{ productId: "P001", productName: "메로나", categoryId: "C1", stock: 10 }],
+    products: [{ productId: "P001", productName: "메로나", categoryId: "C1", stock: 10, active: true }],
     categories: [{ categoryId: "C1", categoryName: "바 아이스크림" }, { categoryId: "C2", categoryName: "컵 아이스크림" }],
     sales: [{ productId: "P001", quantity: 3 }]
   };
@@ -164,7 +164,7 @@ function movementForm(env, type, reason, quantity) {
 test("실제 판매 출고 저장 → sales 생성 → 이미 열린 TOP 5 판매수량과 순위 자동 변경", () => {
   const data = fixture();
   Object.assign(data.products[0], { purchasePrice: 400, sellingPrice: 700 });
-  data.products.push({ productId: "P002", productName: "다른 상품", categoryId: "C1", stock: 10 });
+  data.products.push({ productId: "P002", productName: "다른 상품", categoryId: "C1", stock: 10, active: true });
   data.movements = [];
   data.sales = [{ salesId: "S009", productId: "P002", quantity: 5 }, { salesId: "S010", productId: "P001", quantity: 3 }];
   const env = environment(data);

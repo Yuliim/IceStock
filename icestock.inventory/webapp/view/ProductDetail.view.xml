@@ -61,7 +61,7 @@
                             <table:Column width="6rem"><Label text="처리 유형" /><table:template><ObjectStatus text="{detail>typeLabel}" state="{detail>typeState}" /></table:template></table:Column>
                             <table:Column width="7rem"><Label text="처리 사유" /><table:template><Text text="{detail>reasonLabel}" /></table:template></table:Column>
                             <table:Column width="8rem" hAlign="End"><Label text="처리 전 재고" /><table:template><Text text="{detail>beforeStock}개" /></table:template></table:Column>
-                            <table:Column width="7rem" hAlign="End"><Label text="처리 수량" /><table:template><ObjectNumber number="{detail>signedQuantity}" unit="개" state="{detail>typeState}" /></table:template></table:Column>
+                            <table:Column width="7rem" hAlign="End"><Label text="처리 수량" /><table:template><HBox width="100%" height="100%" alignItems="Center" justifyContent="End"><ObjectNumber number="{detail>signedQuantity}" unit="개" state="{detail>typeState}" /></HBox></table:template></table:Column>
                             <table:Column width="8rem" hAlign="End"><Label text="처리 후 재고" /><table:template><Text text="{detail>afterStock}개" /></table:template></table:Column>
                             <table:Column width="14rem"><Label text="비고" /><table:template><Text text="{detail>note}" /></table:template></table:Column>
                         </table:columns>

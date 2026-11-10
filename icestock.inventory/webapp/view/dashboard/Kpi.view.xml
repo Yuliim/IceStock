@@ -68,8 +68,13 @@
                         <Text text="이번 달 입출고"/>
                         <core:Icon src="sap-icon://synchronize" size="1.5rem" color="#6a1b9a"/>
                     </HBox>
-                    <Label text="당월 입고·출고 수량 합계"/>
-                    <ObjectNumber number="{kpi>/monthlyTotal}" unit="개" class="sapUiSmallMarginTopBottom"/>
+                    <Label text="입출고 건수 및 당월 입고·출고 수량"/>
+                    <ObjectNumber
+                        number="{kpi>/monthlyTotal}"
+                        unit="건"
+                        class="sapUiSmallMarginTopBottom"/>
+                    <Text
+                        text="{= '입고 ' + ${kpi>/monthlyIn} + '개 · 출고 ' + ${kpi>/monthlyOut} + '개' }"/>
                 </VBox>
             </Panel>
             </HBox>

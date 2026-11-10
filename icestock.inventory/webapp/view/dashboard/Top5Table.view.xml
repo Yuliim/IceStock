@@ -19,11 +19,10 @@
 
         <t:Table rows="{top5>/top5Stock}"
                 selectionMode="None"
-                rowHeight="70"
-                class="noLineTable">
+                class="noLineTable top5Table">
             <t:columns>
                 <t:Column width="3rem" hAlign="Center">
-                    <Label text="순위" />
+                    <Label text="순위" class="lowStockHeaderLabel"/>
                     <t:template>
                         <Text text="{top5>rank}" class="rankBadge">
                             <customData>
@@ -33,13 +32,13 @@
                     </t:template>
                 </t:Column>
                 <t:Column hAlign="Center">
-                    <Label text="상품명" />
+                    <Label text="상품명" class="lowStockHeaderLabel"/>
                     <t:template>
                         <Text text="{top5>productName}"/>
                     </t:template>
                 </t:Column>
                 <t:Column hAlign="Center">
-                    <Label text="카테고리" />
+                    <Label text="카테고리" class="lowStockHeaderLabel"/>
                     <t:template>
                         <Text text="{top5>categoryName}" class="catTag">
                             <customData>
@@ -49,7 +48,7 @@
                     </t:template>
                 </t:Column>
                 <t:Column hAlign="Center">
-                    <Label text="판매수량" />
+                    <Label text="판매수량" class="lowStockHeaderLabel"/>
                     <t:template>
                         <Text text="{top5>quantity}개"/>
                     </t:template>

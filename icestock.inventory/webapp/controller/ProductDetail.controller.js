@@ -75,7 +75,7 @@ sap.ui.define([
         // YYYY-MM-DD는 문자열로 날짜순 비교가 가능하다. 같은 날짜는 처리번호 역순이다.
         .sort((left, right) => right.date.localeCompare(left.date) ||
           right.movementId.localeCompare(left.movementId, undefined, { numeric: true }));
-      const low = product.stock <= product.safetyStock;
+      const low = product.stock < product.safetyStock;
       // 100건이 넘는 이력도 바인딩되도록 기본 목록 제한을 늘린다.
       model.setSizeLimit(Math.max(history.length, 100));
       // detail> 경로에 연결된 View 컨트롤들이 아래 값을 표시한다.

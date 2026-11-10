@@ -68,7 +68,7 @@ sap.ui.define([
       this._rows = (this._inventory.getProperty("/products") || [])
         .map((product) => {
           const category = categories.find((item) => item.categoryId === product.categoryId);
-          const low = product.stock <= product.safetyStock;
+          const low = product.stock < product.safetyStock;
           // ...product는 원본 속성을 복사한다. 아래 표시 값은 원본에 추가하지 않는다.
           // stockState는 UI5 색상 표시용 값이며 필요수량은 음수가 되지 않게 한다.
           return {

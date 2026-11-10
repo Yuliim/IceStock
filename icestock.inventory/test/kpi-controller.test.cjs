@@ -77,7 +77,7 @@ test("활성 상품·안전재고 경계·당월 수량 합계와 연도 필터"
   const result = controller._calculateKpis(new Date(2026, 10, 9));
   assert.equal(result.productCount, 3);
   assert.equal(result.totalStock, 15);
-  assert.equal(result.lowStockCount, 2);
+  assert.equal(result.lowStockCount, 1);
   assert.equal(result.monthlyIn, 20);
   assert.equal(result.monthlyOut, 7);
   assert.equal(result.monthlyTotal, 2);

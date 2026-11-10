@@ -246,7 +246,7 @@ sap.ui.define([
           return;
         }
         oStatus.setText(`현재 재고 ${oProduct.stock}개 · 안전 재고 ${oProduct.safetyStock}개`);
-        oStatus.setState(oProduct.stock <= oProduct.safetyStock ? "Warning" : "Success");
+        oStatus.setState(oProduct.stock < oProduct.safetyStock ? "Warning" : "Success");
       },
 
       // 검색어·기간·유형·사유를 조합해 이력 테이블의 애플리케이션 필터를 구성한다.

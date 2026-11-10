@@ -9,6 +9,23 @@ function setup(data) {
   let controller;
   let model;
   const bindings = [];
+  const eventListeners = [];
+  const eventBus = {
+    subscribe(channel, event, listener, context) {
+      eventListeners.push({ channel, event, listener, context });
+    },
+    unsubscribe(channel, event, listener, context) {
+      const index = eventListeners.findIndex((item) =>
+        item.channel === channel && item.event === event &&
+        item.listener === listener && item.context === context);
+      if (index >= 0) { eventListeners.splice(index, 1); }
+    },
+    publish(channel, event) {
+      eventListeners
+        .filter((item) => item.channel === channel && item.event === event)
+        .forEach((item) => item.listener.call(item.context));
+    }
+  };
   const inventory = {
     getProperty: (key) => data[key.slice(1)],
     attachRequestCompleted(fn, context) { this.completed = () => fn.call(context); },
@@ -33,9 +50,12 @@ function setup(data) {
     } } }
   });
   controller.getView = () => ({ setModel(value) { model = value; }, getModel: () => model });
-  controller.getOwnerComponent = () => ({ getModel: () => inventory });
+  controller.getOwnerComponent = () => ({
+    getModel: () => inventory,
+    getEventBus: () => eventBus
+  });
   controller.onInit();
-  return { controller, inventory, bindings, getValues: () => model.data };
+  return { controller, inventory, bindings, eventBus, getValues: () => model.data };
 }
 
 test("활성 상품·안전재고 경계·당월 수량 합계와 연도 필터", () => {
@@ -89,4 +109,21 @@ test("로딩 전 빈 값·로딩 완료·원본 변경·종료 시 이벤트 정
   controller.onExit();
   assert.equal(inventory.completed, null);
   assert.ok(bindings.every((binding) => binding.destroyed && binding.changed === null));
+});
+
+test("비활성화 이벤트가 활성 상품 KPI를 즉시 갱신", () => {
+  const data = {
+    products: [
+      { active: true, stock: 4, safetyStock: 2 },
+      { active: true, stock: 3, safetyStock: 2 }
+    ],
+    movements: []
+  };
+  const { inventory, eventBus, getValues } = setup(data);
+  assert.equal(getValues().productCount, 2);
+
+  inventory.getProperty("/products")[0].active = false;
+  eventBus.publish("inventory", "changed");
+
+  assert.equal(getValues().productCount, 1);
 });

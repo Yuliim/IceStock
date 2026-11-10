@@ -45,8 +45,8 @@ sap.ui.define([
       let lowStockCount = 0;
       activeProducts.forEach((product) => {
         totalStock += product.stock;
-        // 안전재고와 같아도 부족에 포함한다. 품절 상품도 이 조건에 포함된다.
-        if (product.stock <= product.safetyStock) {
+        // 안전재고 미만을 부족으로 포함한다. 품절 상품도 이 조건에 포함된다.
+        if (product.stock < product.safetyStock) {
           lowStockCount += 1;
         }
       });

@@ -119,14 +119,14 @@ test("판매량·부족 경계·필요수량 가공 및 필터 조합", () => {
   assert.equal(row.soldQuantity, expected);
   assert.equal(row.requiredQuantity, Math.max(first.safetyStock - first.stock, 0));
   assert.equal(first.soldQuantity, undefined, "가공 값이 원본에 추가되지 않는다");
-  inventory.setProperty("/products/0/stock", first.safetyStock);
+  inventory.setProperty("/products/0/stock", first.safetyStock - 1);
   controller._refreshProducts();
   models.product.setProperty("/query", first.productId.toLowerCase());
   models.product.setProperty("/category", first.categoryId);
   models.product.setProperty("/status", "부족");
   controller.onFilterChange();
   assert.equal(models.product.getProperty("/count"), 1);
-  assert.equal(models.product.getProperty("/rows/0/requiredQuantity"), 0);
+  assert.equal(models.product.getProperty("/rows/0/requiredQuantity"), 1);
   models.product.setProperty("/category", "UNKNOWN");
   controller.onFilterChange();
   assert.equal(models.product.getProperty("/count"), 0);

@@ -52,17 +52,17 @@
                     </table:extension>
                     <!-- 관리 버튼은 속한 행의 bindingContext로 상품을 식별한다. -->
                     <table:columns>
-                        <table:Column width="6rem"><Label text="상품코드" /><table:template><Text text="{product>productId}" /></table:template></table:Column>
+                        <table:Column width="5rem"><Label text="상품코드" /><table:template><Text text="{product>productId}" /></table:template></table:Column>
                         <table:Column width="10rem"><Label text="상품명" /><table:template><Link text="{product>productName}" press=".onDetail" /></table:template></table:Column>
                         <table:Column width="8rem"><Label text="카테고리" /><table:template><Text text="{product>categoryName}" /></table:template></table:Column>
-                        <table:Column width="7rem" hAlign="End"><Label text="매입단가" /><table:template><ObjectNumber number="{path:'product>purchasePrice', type:'sap.ui.model.type.Float', formatOptions:{maxFractionDigits:2}}" unit="원" emphasized="false" /></table:template></table:Column>
-                        <table:Column width="7rem" hAlign="End"><Label text="매출단가" /><table:template><ObjectNumber number="{path:'product>sellingPrice', type:'sap.ui.model.type.Float', formatOptions:{maxFractionDigits:2}}" unit="원" emphasized="false" /></table:template></table:Column>
-                        <table:Column width="6rem" hAlign="End"><Label text="현재 재고" /><table:template><ObjectNumber number="{product>stock}" unit="개" state="{product>stockState}" /></table:template></table:Column>
-                        <table:Column width="6rem" hAlign="End"><Label text="안전재고" /><table:template><Text text="{product>safetyStock}개" /></table:template></table:Column>
-                        <table:Column width="6rem" hAlign="End"><Label text="판매수량" /><table:template><Text text="{product>soldQuantity}개" /></table:template></table:Column>
-                        <table:Column width="6rem"><Label text="재고 상태" /><table:template><ObjectStatus text="{product>stockStatus}" state="{product>stockState}" /></table:template></table:Column>
-                        <table:Column width="6rem" hAlign="End"><Label text="필요수량" /><table:template><Text text="{product>requiredQuantity}개" /></table:template></table:Column>
-                        <table:Column width="9rem"><Label text="관리" /><table:template>
+                        <table:Column width="6rem" hAlign="End"><Label text="매입단가" /><table:template><HBox width="100%" height="100%" alignItems="Center" justifyContent="End"><ObjectNumber number="{path:'product>purchasePrice', type:'sap.ui.model.type.Float', formatOptions:{maxFractionDigits:2}}" unit="원" emphasized="false" /></HBox></table:template></table:Column>
+                        <table:Column width="6rem" hAlign="End"><Label text="매출단가" /><table:template><HBox width="100%" height="100%" alignItems="Center" justifyContent="End"><ObjectNumber number="{path:'product>sellingPrice', type:'sap.ui.model.type.Float', formatOptions:{maxFractionDigits:2}}" unit="원" emphasized="false" /></HBox></table:template></table:Column>
+                        <table:Column width="6rem" hAlign="End"><Label text="현재 재고" /><table:template><HBox width="100%" height="100%" alignItems="Center" justifyContent="End"><ObjectNumber number="{product>stock}" unit="개" state="{product>stockState}" /></HBox></table:template></table:Column>
+                        <table:Column width="6rem" hAlign="End"><Label text="안전재고" /><table:template><HBox width="100%" height="100%" alignItems="Center" justifyContent="End"><ObjectNumber number="{product>safetyStock}" unit="개" /></HBox></table:template></table:Column>
+                        <table:Column width="6rem" hAlign="End"><Label text="판매수량" /><table:template><HBox width="100%" height="100%" alignItems="Center" justifyContent="End"><ObjectNumber number="{product>soldQuantity}" unit="개" /></HBox></table:template></table:Column>
+                        <table:Column width="5rem"><Label text="재고 상태" /><table:template><ObjectStatus text="{product>stockStatus}" state="{product>stockState}" /></table:template></table:Column>
+                        <table:Column width="6rem" hAlign="End"><Label text="필요수량" /><table:template><HBox width="100%" height="100%" alignItems="Center" justifyContent="End"><ObjectNumber number="{product>requiredQuantity}" unit="개" /></HBox></table:template></table:Column>
+                        <table:Column width="7rem"><Label text="관리" /><table:template>
                             <HBox><Button icon="sap-icon://display" tooltip="상세보기" type="Transparent" press=".onDetail" />
                                 <Button icon="sap-icon://edit" tooltip="상품 수정" type="Transparent" press=".onEdit" />
                                 <Button icon="sap-icon://delete" tooltip="상품 비활성화" type="Transparent" press=".onDeactivate" /></HBox>
